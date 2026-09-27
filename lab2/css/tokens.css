@@ -1,0 +1,112 @@
+/**
+ * DYVYLO DESIGN SYSTEM - TOKENS
+ * Concept: Architectural Cyberpunk / Brutalist Minimal Precision Media Hub
+ */
+
+:root {
+  /* Surface & Background Hierarchy */
+  --bg-page: #08080a;
+  --bg-surface: #0f0f13;
+  --bg-elevated: #15151b;
+  --bg-card: #121217;
+  --bg-card-hover: #181822;
+  --bg-input: #0a0a0e;
+  --bg-hover: #1c1c25;
+  --bg-glass: rgba(15, 15, 19, 0.88);
+  --bg-overlay: rgba(5, 5, 8, 0.82);
+
+  /* Border & Line System */
+  --border-subtle: rgba(255, 255, 255, 0.07);
+  --border-main: rgba(255, 255, 255, 0.12);
+  --border-hover: rgba(255, 255, 255, 0.24);
+  --border-focus: #3b82f6;
+  --border-divider: rgba(255, 255, 255, 0.05);
+
+  /* Typography Colors */
+  --text-main: #f8fafc;
+  --text-muted: #94a3b8;
+  --text-dim: #64748b;
+  --text-inverse: #030305;
+  --text-accent: #60a5fa;
+
+  /* Accent & Brand Colors */
+  --accent-primary: #3b82f6;
+  --accent-hover: #2563eb;
+  --accent-dim: rgba(59, 130, 246, 0.12);
+  --accent-border: rgba(59, 130, 246, 0.35);
+  --accent-glow: rgba(59, 130, 246, 0.25);
+
+  --accent-secondary: #8b5cf6;
+  --accent-secondary-dim: rgba(139, 92, 246, 0.12);
+
+  /* Status Colors */
+  --status-live: #22c55e;
+  --status-live-dim: rgba(34, 197, 94, 0.12);
+  --status-live-border: rgba(34, 197, 94, 0.35);
+
+  --status-warning: #eab308;
+  --status-warning-dim: rgba(234, 179, 8, 0.12);
+  --status-warning-border: rgba(234, 179, 8, 0.35);
+
+  --status-danger: #ef4444;
+  --status-danger-dim: rgba(239, 68, 68, 0.12);
+  --status-danger-border: rgba(239, 68, 68, 0.35);
+
+  --status-info: #06b6d4;
+  --status-info-dim: rgba(6, 182, 212, 0.12);
+
+  /* Strict Geometry Scale (2px brutalist micro-radii) */
+  --radius-xs: 1px;
+  --radius-sm: 2px;
+  --radius: 2px;
+  --radius-md: 3px;
+  --radius-lg: 4px;
+  --radius-pill: 9999px;
+
+  /* Typography Scales */
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-mono: 'JetBrains Mono', SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+
+  --font-size-2xs: 10px;
+  --font-size-xs: 11px;
+  --font-size-sm: 12.5px;
+  --font-size-base: 14px;
+  --font-size-md: 15px;
+  --font-size-lg: 18px;
+  --font-size-xl: 22px;
+  --font-size-2xl: 28px;
+  --font-size-3xl: 36px;
+  --font-size-4xl: 48px;
+
+  --line-height-tight: 1.15;
+  --line-height-normal: 1.45;
+  --line-height-loose: 1.6;
+
+  /* Spacing Scale */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+
+  /* Transitions */
+  --transition-fast: 0.12s ease;
+  --transition: 0.18s ease;
+  --transition-slow: 0.28s ease;
+
+  /* Shadows (Subtle, Dark architectural depth) */
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.5);
+  --shadow-lg: 0 10px 30px rgba(0, 0, 0, 0.7);
+  --shadow-glow: 0 0 24px rgba(59, 130, 246, 0.2);
+
+  /* Layout */
+  --container-max: 1360px;
+  --container-narrow: 1080px;
+  --header-height: 54px;
+}

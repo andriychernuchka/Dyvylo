@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ДИВИЛО — Авторизація, модальні діалоги та гарячі клавіші</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <style>
+    .modals-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
+      gap: 32px;
+      margin-top: 32px;
+      margin-bottom: 60px;
+    }
+    .modal-frame {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-main);
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-lg);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+    .hotkey-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--border-divider);
+    }
+    .hotkey-row:last-child {
+      border-bottom: none;
+    }
+    .key-badge {
+      display: inline-block;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 700;
+      padding: 3px 8px;
+      background: var(--bg-input);
+      border: 1px solid var(--border-main);
+      border-radius: var(--radius-xs);
+      color: #ffffff;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.4);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- SITE HEADER -->
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="header-left">
+        <a href="index.html" class="brand-logo-wrap">
+          <div class="brand-mark-square">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+              <circle cx="12" cy="12" r="3"></circle>
+            </svg>
+          </div>
+          <div class="brand-text">
+            <span class="brand-name">ДИВИЛО<span class="brand-dot">.</span></span>
+            <span class="brand-slogan">медіа-архів &amp; вузол</span>
+          </div>
+        </a>
+
+        <nav class="site-nav">
+          <a href="index.html">Каталог</a>
+          <a href="player.html">Плеєр</a>
+          <a href="title.html">Тайтл</a>
+          <a href="search.html">Пошук</a>
+          <a href="profile.html">Профіль</a>
+          <a href="components.html">UI Kit</a>
+          <a href="auth.html" class="active">Модалки</a>
+        </nav>
+      </div>
+
+      <div class="header-right">
+        <span class="badge badge-primary">Figma Modal Artboards</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN MODALS CONTENT -->
+  <main class="main-content">
+    <div class="container">
+
+      <div style="margin-top: 36px; border-bottom: 1px solid var(--border-subtle); padding-bottom: 16px;">
+        <span class="badge badge-primary">ЕКРАНИ АВТОРИЗАЦІЇ ТА ДІАЛОГІВ</span>
+        <h1 style="font-size: 28px; font-weight: 700; font-family: var(--font-mono); text-transform: uppercase; margin-top: 8px;">
+          Модальні вікна, форми входу та системні діалоги
+        </h1>
+        <p style="font-size: 14px; color: var(--text-muted); margin-top: 4px;">
+          Повний набір діалогових вікон платформи «Дивило» для імпорту в Figma як окремих фреймів або оверлеїв.
+        </p>
+      </div>
+
+      <div class="modals-grid">
+
+        <!-- MODAL 1: LOGIN FORM -->
+        <div class="modal-frame">
+          <div class="modal-header">
+            <div style="display: flex; align-items: center; gap: 8px;">
+              <div class="brand-mark-square" style="width: 20px; height: 20px;">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"></circle></svg>
+              </div>
+              <span class="modal-title">Вхід до вузла Дивило</span>
+            </div>
+            <span style="font-family: var(--font-mono); font-size: 11px; color: var(--text-dim);">ESC [✕]</span>
+          </div>
+
+          <div class="modal-body">
+            <div class="form-group">
+              <label class="form-label">Email або Node ID</label>
+              <input type="text" class="input-text" placeholder="sespure@dyvylo.org" value="andrijcernicka92@gmail.com">
+            </div>
+
+            <div class="form-group">
+              <div style="display: flex; justify-content: space-between; align-items: center;">
+                <label class="form-label">Пароль облікового запису</label>
+                <a href="#" style="font-size: 11px; color: var(--accent-primary); text-decoration: none;">Забули пароль?</a>
+              </div>
+              <input type="password" class="input-text" value="••••••••••••••••">
+            </div>
+
+            <div style="margin-bottom: 20px;">
+              <label class="checkbox-wrap">
+                <input type="checkbox" checked>
+                <span>Запам'ятати цю робочу станцію (30 днів)</span>
+              </label>
+            </div>
+
+            <button class="btn btn-primary btn-lg" style="width: 100%;">
+              Увійти в акаунт
+            </button>
+
+            <div style="display: flex; align-items: center; gap: 12px; margin: 18px 0;">
+              <div style="flex: 1; height: 1px; background: var(--border-divider);"></div>
+              <span style="font-size: 11px; font-family: var(--font-mono); color: var(--text-dim);">АБО ЧЕРЕЗ КЛЮЧ</span>
+              <div style="flex: 1; height: 1px; background: var(--border-divider);"></div>
+            </div>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+              <button class="btn btn-secondary btn-sm">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+                GitHub ID
+              </button>
+              <button class="btn btn-secondary btn-sm">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+                Passkey
+              </button>
+            </div>
+          </div>
+
+          <div class="modal-footer" style="justify-content: center;">
+            <span style="font-size: 12px; color: var(--text-dim);">
+              Немає доступу до вузла? <a href="#" style="color: var(--accent-primary); text-decoration: none; font-weight: 600;">Зареєструватися</a>
+            </span>
+          </div>
+        </div>
+
+        <!-- MODAL 2: REGISTRATION FORM -->
+        <div class="modal-frame">
+          <div class="modal-header">
+            <span class="modal-title">Створення облікового запису</span>
+            <span class="badge badge-primary">Invite Only</span>
+          </div>
+
+          <div class="modal-body">
+            <div class="form-group">
+              <label class="form-label">Нікнейм користувача</label>
+              <input type="text" class="input-text" placeholder="sespure">
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Електронна пошта</label>
+              <input type="email" class="input-text" placeholder="name@domain.com">
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Пароль (мінімум 10 символів)</label>
+              <input type="password" class="input-text" placeholder="Створіть надійний ключ">
+              <div class="progress-bar-wrap" style="height: 4px; margin-top: 6px;">
+                <div class="progress-bar-fill" style="width: 85%; background: var(--status-live);"></div>
+              </div>
+              <span class="form-hint" style="color: var(--status-live);">Надійність: Висока (Entropy: 84 bits)</span>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Код запрошення або Node Token</label>
+              <input type="text" class="input-text" placeholder="DYV-2026-XXXX">
+            </div>
+
+            <button class="btn btn-primary btn-lg" style="width: 100%;">
+              Приєднатися до спільноти
+            </button>
+          </div>
+
+          <div class="modal-footer" style="justify-content: center;">
+            <span style="font-size: 11px; color: var(--text-dim);">
+              Створюючи профіль, ви підтримуєте принципи вільного українського медіа-архіву.
+            </span>
+          </div>
+        </div>
+
+        <!-- MODAL 3: HOTKEYS CHEATSHEET -->
+        <div id="hotkeys" class="modal-frame">
+          <div class="modal-header">
+            <div style="display: flex; align-items: center; gap: 8px;">
+              <span class="modal-title">Швидкі комбінації клавіш</span>
+              <span class="badge">Hotkeys</span>
+            </div>
+            <span class="search-shortcut">ESC</span>
+          </div>
+
+          <div class="modal-body" style="padding-top: 10px;">
+            <div class="hotkey-row">
+              <span style="font-size: 13px; color: var(--text-main);">Відтворення / Пауза</span>
+              <span class="key-badge">Space</span>
+            </div>
+            <div class="hotkey-row">
+              <span style="font-size: 13px; color: var(--text-main);">Повноекранний режим</span>
+              <span class="key-badge">F</span>
+            </div>
+            <div class="hotkey-row">
+              <span style="font-size: 13px; color: var(--text-main);">Режим «Кінозал» (Затемнення)</span>
+              <span class="key-badge">T</span>
+            </div>
+            <div class="hotkey-row">
+              <span style="font-size: 13px; color: var(--text-main);">Перемотування на 10 секунд</span>
+              <div style="display: flex; gap: 4px;">
+                <span class="key-badge">J</span>
+                <span class="key-badge">L</span>
+              </div>
+            </div>
+            <div class="hotkey-row">
+              <span style="font-size: 13px; color: var(--text-main);">Увімкнути / Вимкнути звук</span>
+              <span class="key-badge">M</span>
+            </div>
+            <div class="hotkey-row">
+              <span style="font-size: 13px; color: var(--text-main);">Перемикання субтитрів</span>
+              <span class="key-badge">C</span>
+            </div>
+            <div class="hotkey-row">
+              <span style="font-size: 13px; color: var(--text-main);">Швидкий пошук у каталозі</span>
+              <span class="key-badge">⌘ K</span>
+            </div>
+          </div>
+
+          <div class="modal-footer">
+            <button class="btn btn-primary btn-sm">Зрозуміло</button>
+          </div>
+        </div>
+
+        <!-- MODAL 4: SERVER / NODE SELECTOR -->
+        <div class="modal-frame">
+          <div class="modal-header">
+            <div style="display: flex; align-items: center; gap: 8px;">
+              <span class="modal-title">Вибір джерела та вузла стріму</span>
+              <span class="badge badge-live">Live Ping</span>
+            </div>
+          </div>
+
+          <div class="modal-body">
+            <div style="display: flex; flex-direction: column; gap: 10px;">
+              <!-- Node 1 -->
+              <div style="background: var(--bg-card); border: 1px solid var(--accent-primary); border-radius: var(--radius); padding: 12px; display: flex; justify-content: space-between; align-items: center;">
+                <div>
+                  <div style="font-weight: 700; font-size: 13px; color: #ffffff;">UA-KYIV-DC1 (Основний вузол)</div>
+                  <div style="font-size: 11px; color: var(--text-dim); font-family: var(--font-mono);">Магістраль 10 Gbps · Пропускна здатність 98%</div>
+                </div>
+                <div style="text-align: right;">
+                  <span class="badge badge-live">18.2 MS</span>
+                </div>
+              </div>
+
+              <!-- Node 2 -->
+              <div style="background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: var(--radius); padding: 12px; display: flex; justify-content: space-between; align-items: center;">
+                <div>
+                  <div style="font-weight: 600; font-size: 13px; color: var(--text-main);">UA-LVIV-WEST (Резервний)</div>
+                  <div style="font-size: 11px; color: var(--text-dim); font-family: var(--font-mono);">Локальний кеш · Пропускна здатність 95%</div>
+                </div>
+                <div style="text-align: right;">
+                  <span class="badge badge-live">12.4 MS</span>
+                </div>
+              </div>
+
+              <!-- Node 3 -->
+              <div style="background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: var(--radius); padding: 12px; display: flex; justify-content: space-between; align-items: center;">
+                <div>
+                  <div style="font-weight: 600; font-size: 13px; color: var(--text-main);">EU-FRANKFURT-CDN (Європа)</div>
+                  <div style="font-size: 11px; color: var(--text-dim); font-family: var(--font-mono);">Міжнародний ретранслятор</div>
+                </div>
+                <div style="text-align: right;">
+                  <span class="badge">34.0 MS</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="modal-footer">
+            <button class="btn btn-outline btn-sm">Автоматичний вибір</button>
+            <button class="btn btn-primary btn-sm">Зберегти вибір</button>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </main>
+
+  <!-- SITE FOOTER -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <div>
+          <span>© 2026 ДИВИЛО МЕДІА-ХАБ · МОДАЛЬНІ ВІКНА ТА АВТОРИЗАЦІЯ</span>
+        </div>
+        <div style="display: flex; gap: 16px; align-items: center;">
+          <span class="node-telemetry-badge">
+            <span class="status-dot status-dot-live"></span>
+            <span>АВТОРИЗАЦІЙНИЙ ШЛЮЗ: ONLINE</span>
+          </span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

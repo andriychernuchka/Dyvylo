@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ДИВИЛО — Design System & UI Kit</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <style>
+    .ui-kit-wrapper {
+      padding: 40px 0 80px 0;
+    }
+    .kit-section {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius);
+      padding: 32px;
+      margin-bottom: 40px;
+    }
+    .kit-section-header {
+      margin-bottom: 24px;
+      border-bottom: 1px solid var(--border-subtle);
+      padding-bottom: 12px;
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+    }
+    .kit-section-title {
+      font-size: 20px;
+      font-weight: 700;
+      font-family: var(--font-mono);
+      text-transform: uppercase;
+      letter-spacing: -0.2px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .kit-section-num {
+      color: var(--accent-primary);
+    }
+    .kit-grid {
+      display: grid;
+      gap: 24px;
+    }
+    .swatch-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+      gap: 16px;
+    }
+    .swatch-card {
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius);
+      overflow: hidden;
+      background: var(--bg-card);
+    }
+    .swatch-color {
+      height: 70px;
+      width: 100%;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+    .swatch-meta {
+      padding: 10px;
+      font-family: var(--font-mono);
+      font-size: 11px;
+    }
+    .swatch-name {
+      font-weight: 600;
+      color: var(--text-main);
+      margin-bottom: 2px;
+    }
+    .swatch-code {
+      color: var(--text-dim);
+    }
+    .component-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 16px;
+      padding: 16px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-divider);
+      border-radius: var(--radius);
+    }
+    .component-label {
+      width: 100%;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text-dim);
+      font-family: var(--font-mono);
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 1. HEADER -->
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="header-left">
+        <a href="index.html" class="brand-logo-wrap">
+          <div class="brand-mark-square">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+              <circle cx="12" cy="12" r="3"></circle>
+            </svg>
+          </div>
+          <div class="brand-text">
+            <span class="brand-name">ДИВИЛО<span class="brand-dot">.</span></span>
+            <span class="brand-slogan">медіа-архів &amp; вузол</span>
+          </div>
+        </a>
+
+        <nav class="site-nav">
+          <a href="components.html" class="active">UI Kit / Design System</a>
+          <a href="index.html">Головна</a>
+          <a href="player.html">Плеєр</a>
+          <a href="title.html">Сторінка тайтлу</a>
+          <a href="search.html">Пошук та фільтри</a>
+          <a href="profile.html">Профіль</a>
+          <a href="auth.html">Авторизація / Модалки</a>
+        </nav>
+      </div>
+
+      <div class="header-right">
+        <span class="badge badge-primary">Figma Ready</span>
+        <a href="index.html" class="btn btn-secondary btn-sm">Перейти на сайт →</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- 2. MAIN UI KIT CONTENT -->
+  <main class="main-content ui-kit-wrapper">
+    <div class="container">
+
+      <!-- HERO HEADER FOR DESIGN SYSTEM -->
+      <div style="margin-bottom: 40px; padding: 28px; background: var(--bg-surface); border: 1px solid var(--border-main); border-radius: var(--radius);">
+        <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 16px;">
+          <div>
+            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
+              <span class="badge badge-primary">SPECIFICATION V2.0</span>
+              <span class="badge badge-live"><span class="status-dot status-dot-live"></span> СТАБІЛЬНА ВЕРСІЯ</span>
+            </div>
+            <h1 style="font-size: 32px; font-weight: 800; font-family: var(--font-mono); letter-spacing: -0.5px; text-transform: uppercase;">
+              Дивило — Design System &amp; Component Hub
+            </h1>
+            <p style="color: var(--text-muted); font-size: 15px; margin-top: 6px; max-width: 750px;">
+              Єдина цифрова дизайн-система українського медіа-вузла нового покоління. Побудована на архітектурному мінімалізмі, строгому 2px скругленні, глибоких контрастних темних фонах та кобальтових акцентах. Оптимізована для імпорту в Figma через HTML плагіни.
+            </p>
+          </div>
+          <div style="text-align: right; font-family: var(--font-mono); font-size: 11px; color: var(--text-dim);">
+            <div>NODE ARCHITECTURE: DISTRIBUTED P2P</div>
+            <div>TYPOGRAPHY: INTER + JETBRAINS MONO</div>
+            <div>CANVAS GRID: 8PT / 4PT SYSTEM</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SECTION 01: COLOR TOKENS -->
+      <section class="kit-section">
+        <div class="kit-section-header">
+          <h2 class="kit-section-title"><span class="kit-section-num">01.</span> Колірна палітра та токени поверхні</h2>
+          <span class="badge">Tokens / Colors</span>
+        </div>
+
+        <div class="swatch-grid">
+          <!-- Page BG -->
+          <div class="swatch-card">
+            <div class="swatch-color" style="background: #08080a;"></div>
+            <div class="swatch-meta">
+              <div class="swatch-name">Page BG</div>
+              <div class="swatch-code">#08080a</div>
+              <div class="swatch-code">--bg-page</div>
+            </div>
+          </div>
+
+          <!-- Surface BG -->
+          <div class="swatch-card">
+            <div class="swatch-color" style="background: #0f0f13;"></div>
+            <div class="swatch-meta">
+              <div class="swatch-name">Surface</div>
+              <div class="swatch-code">#0f0f13</div>
+              <div class="swatch-code">--bg-surface</div>
+            </div>
+          </div>
+
+          <!-- Elevated BG -->
+          <div class="swatch-card">
+            <div class="swatch-color" style="background: #15151b;"></div>
+            <div class="swatch-meta">
+              <div class="swatch-name">Elevated</div>
+              <div class="swatch-code">#15151b</div>
+              <div class="swatch-code">--bg-elevated</div>
+            </div>
+          </div>
+
+          <!-- Card BG -->
+          <div class="swatch-card">
+            <div class="swatch-color" style="background: #121217;"></div>
+            <div class="swatch-meta">
+              <div class="swatch-name">Card BG</div>
+              <div class="swatch-code">#121217</div>
+              <div class="swatch-code">--bg-card</div>
+            </div>
+          </div>
+
+          <!-- Cobalt Accent -->
+          <div class="swatch-card">
+            <div class="swatch-color" style="background: #3b82f6;"></div>
+            <div class="swatch-meta">
+              <div class="swatch-name">Cobalt Primary</div>
+              <div class="swatch-code">#3b82f6</div>
+              <div class="swatch-code">--accent-primary</div>
+            </div>
+          </div>
+
+          <!-- Cobalt Hover -->
+          <div class="swatch-card">
+            <div class="swatch-color" style="background: #2563eb;"></div>
+            <div class="swatch-meta">
+              <div class="swatch-name">Cobalt Hover</div>
+              <div class="swatch-code">#2563eb</div>
+              <div class="swatch-code">--accent-hover</div>
+            </div>
+          </div>
+
+          <!-- Status Live -->
+          <div class="swatch-card">
+            <div class="swatch-color" style="background: #22c55e;"></div>
+            <div class="swatch-meta">
+              <div class="swatch-name">Live / Healthy</div>
+              <div class="swatch-code">#22c55e</div>
+              <div class="swatch-code">--status-live</div>
+            </div>
+          </div>
+
+          <!-- Status Warning -->
+          <div class="swatch-card">
+            <div class="swatch-color" style="background: #eab308;"></div>
+            <div class="swatch-meta">
+              <div class="swatch-name">Warning / Star</div>
+              <div class="swatch-code">#eab308</div>
+              <div class="swatch-code">--status-warning</div>
+            </div>
+          </div>
+
+          <!-- Status Danger -->
+          <div class="swatch-card">
+            <div class="swatch-color" style="background: #ef4444;"></div>
+            <div class="swatch-meta">
+              <div class="swatch-name">Danger / Error</div>
+              <div class="swatch-code">#ef4444</div>
+              <div class="swatch-code">--status-danger</div>
+            </div>
+          </div>
+
+          <!-- Status Info -->
+          <div class="swatch-card">
+            <div class="swatch-color" style="background: #06b6d4;"></div>
+            <div class="swatch-meta">
+              <div class="swatch-name">Telemetry Info</div>
+              <div class="swatch-code">#06b6d4</div>
+              <div class="swatch-code">--status-info</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 02: TYPOGRAPHY HIERARCHY -->
+      <section class="kit-section">
+        <div class="kit-section-header">
+          <h2 class="kit-section-title"><span class="kit-section-num">02.</span> Типографічна ієрархія</h2>
+          <span class="badge">Inter + JetBrains Mono</span>
+        </div>
+
+        <div style="display: flex; flex-direction: column; gap: 20px;">
+          <div style="border-bottom: 1px solid var(--border-divider); padding-bottom: 14px;">
+            <div style="font-size: 11px; font-family: var(--font-mono); color: var(--text-dim); margin-bottom: 4px;">DISPLAY H1 · 40px / 800 WIGHT / INTER</div>
+            <div style="font-size: 40px; font-weight: 800; letter-spacing: -0.5px; line-height: 1.1;">ДИВИСЬ УКРАЇНСЬКОЮ. БЕЗ КОМПРОМІСІВ.</div>
+          </div>
+
+          <div style="border-bottom: 1px solid var(--border-divider); padding-bottom: 14px;">
+            <div style="font-size: 11px; font-family: var(--font-mono); color: var(--text-dim); margin-bottom: 4px;">HEADING H2 · 28px / 700 WEIGHT / MONO</div>
+            <div style="font-size: 28px; font-weight: 700; font-family: var(--font-mono); letter-spacing: -0.3px;">ДІМ ДРАКОНА — СЕЗОН 2 (2024)</div>
+          </div>
+
+          <div style="border-bottom: 1px solid var(--border-divider); padding-bottom: 14px;">
+            <div style="font-size: 11px; font-family: var(--font-mono); color: var(--text-dim); margin-bottom: 4px;">HEADING H3 · 20px / 600 WEIGHT / INTER</div>
+            <div style="font-size: 20px; font-weight: 600;">Популярні кінострічки та телесеріали у 4K Ultra HD</div>
+          </div>
+
+          <div style="border-bottom: 1px solid var(--border-divider); padding-bottom: 14px;">
+            <div style="font-size: 11px; font-family: var(--font-mono); color: var(--text-dim); margin-bottom: 4px;">BODY REGULAR · 14px / 400 WEIGHT / INTER</div>
+            <p style="font-size: 14px; color: var(--text-muted); line-height: 1.6; max-width: 800px;">
+              Вестерос стоїть на порозі громадянської війни. Танець Драконів починається з першої повітряної битви біля Грачиного Притулку. Всі епізоди доступні з багатоголосим дубляжем від студії «Цікава Ідея» та оригінальною аудіодоріжкою Dolby 5.1.
+            </p>
+          </div>
+
+          <div>
+            <div style="font-size: 11px; font-family: var(--font-mono); color: var(--text-dim); margin-bottom: 4px;">CODE / TELEMETRY · 12px / 500 WEIGHT / JETBRAINS MONO</div>
+            <div style="font-size: 12px; font-family: var(--font-mono); color: var(--accent-primary);">
+              STREAM_HASH: #98f24a · CODEC: HEVC_MAIN10 · BITRATE: 28.4MBPS · NODE: KYIV_DC2 (19MS)
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 03: BADGES & STATUS CHIPS -->
+      <section class="kit-section">
+        <div class="kit-section-header">
+          <h2 class="kit-section-title"><span class="kit-section-num">03.</span> Бейджі, маркування та статуси</h2>
+          <span class="badge">Metadata Components</span>
+        </div>
+
+        <div class="kit-grid">
+          <div>
+            <div class="component-label">Стрімінгові та технічні бейджі</div>
+            <div class="component-row">
+              <span class="badge">1080P FULL HD</span>
+              <span class="badge">4K UHD</span>
+              <span class="badge">HDR10+</span>
+              <span class="badge">DOLBY VISION</span>
+              <span class="badge">60 FPS</span>
+              <span class="badge">DOLBY ATMOS 5.1</span>
+              <span class="badge">HEVC / H.265</span>
+              <span class="badge">18+</span>
+              <span class="badge">16+</span>
+            </div>
+          </div>
+
+          <div>
+            <div class="component-label">Оцінки, рейтинги та статус системи</div>
+            <div class="component-row">
+              <span class="badge badge-rating">★ IMDb 8.9</span>
+              <span class="badge badge-rating">★ ДИВИЛО 9.5</span>
+              <span class="badge badge-primary">НОВИНКА</span>
+              <span class="badge badge-primary">ТОП ТИЖНЯ</span>
+              <span class="badge badge-live"><span class="status-dot status-dot-live"></span> В ЕФІРІ</span>
+              <span class="badge badge-live"><span class="status-dot status-dot-live"></span> ВУЗОЛ АКТИВНИЙ</span>
+              <span class="badge badge-danger">ДОСТУП ОБМЕЖЕНО</span>
+              <span class="badge badge-info">P2P КЕШ 98%</span>
+            </div>
+          </div>
+
+          <div>
+            <div class="component-label">Студії української локалізації (Доріжки)</div>
+            <div class="component-row">
+              <span class="badge">Цікава Ідея (MVO)</span>
+              <span class="badge">НеЗупиняйПродакшн</span>
+              <span class="badge">В одне рило</span>
+              <span class="badge">DniproFilm</span>
+              <span class="badge">BaibaKo</span>
+              <span class="badge">Оригінал (Субтитри)</span>
+            </div>
+          </div>
+
+          <div>
+            <div class="component-label">Інтерактивні фільтр-чіпи (з можливістю вибору/видалення)</div>
+            <div class="component-row">
+              <div class="filter-chip active">4K Ultra HD <span class="chip-remove">✕</span></div>
+              <div class="filter-chip active">Український дубляж <span class="chip-remove">✕</span></div>
+              <div class="filter-chip">Фантастика</div>
+              <div class="filter-chip">Містика &amp; Трилер</div>
+              <div class="filter-chip">Серіали 2024–2026</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 04: BUTTONS & INTERACTIVE CONTROLS -->
+      <section class="kit-section">
+        <div class="kit-section-header">
+          <h2 class="kit-section-title"><span class="kit-section-num">04.</span> Кнопки та інтерактивні елементи</h2>
+          <span class="badge">Buttons &amp; Actions</span>
+        </div>
+
+        <div class="kit-grid">
+          <div>
+            <div class="component-label">Основні варіанти стилів кнопок</div>
+            <div class="component-row">
+              <button class="btn btn-primary">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                Дивитися S02:E04
+              </button>
+
+              <button class="btn btn-secondary">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>
+                У збережені
+              </button>
+
+              <button class="btn btn-outline">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+                Завантажити офлайн
+              </button>
+
+              <button class="btn btn-ghost">
+                Детальніше про реліз
+              </button>
+
+              <button class="btn btn-danger">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg>
+                Очистити історію
+              </button>
+            </div>
+          </div>
+
+          <div>
+            <div class="component-label">Розміри кнопок</div>
+            <div class="component-row">
+              <button class="btn btn-primary btn-lg">Large Action (48px)</button>
+              <button class="btn btn-primary btn-md">Medium Standard (36px)</button>
+              <button class="btn btn-primary btn-sm">Small Action (28px)</button>
+              <button class="btn btn-primary btn-xs">Extra Small (22px)</button>
+              <button class="btn btn-primary btn-icon" title="Play">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+              </button>
+              <button class="btn btn-secondary btn-icon" title="Save">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>
+              </button>
+            </div>
+          </div>
+
+          <div>
+            <div class="component-label">Стани кнопок (Звичайний, Активний, Вимкнений)</div>
+            <div class="component-row">
+              <button class="btn btn-primary">Звичайний стан</button>
+              <button class="btn btn-primary" style="background: var(--accent-hover); box-shadow: var(--shadow-glow);">Стан Hover</button>
+              <button class="btn btn-primary" disabled>Вимкнено (Disabled)</button>
+              <button class="btn btn-secondary" disabled>Вимкнено (Disabled)</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 05: FORM INPUTS & SELECTION CONTROLS -->
+      <section class="kit-section">
+        <div class="kit-section-header">
+          <h2 class="kit-section-title"><span class="kit-section-num">05.</span> Поля введення та елементи форм</h2>
+          <span class="badge">Form &amp; Input Controls</span>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px;">
+          <!-- Text Input -->
+          <div class="form-group">
+            <label class="form-label">Пошук тайтлу або студії</label>
+            <div class="search-bar">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+              </svg>
+              <input type="text" placeholder="Пошук серед 14,000+ серій...">
+              <span class="search-shortcut">⌘K</span>
+            </div>
+            <span class="form-hint">Введіть назву фільму, актора чи режисера українською або англійською</span>
+          </div>
+
+          <!-- Select Custom -->
+          <div class="form-group">
+            <label class="form-label">Джерело трансляції (Вузол)</label>
+            <select class="select-custom">
+              <option>Київ-DC1 [Основний магістральний вузол · 18ms]</option>
+              <option>Львів-West [Локальний кеш · 12ms]</option>
+              <option>Frankfurt-CDN [Резервний вузол · 34ms]</option>
+              <option>Варшава-P2P [Peer-to-Peer мережа]</option>
+            </select>
+            <span class="form-hint">Обирається автоматично на основі мінімального пінгу</span>
+          </div>
+
+          <!-- Checkboxes & Toggles -->
+          <div class="form-group">
+            <label class="form-label">Прапорці та перемикачі</label>
+            <div style="display: flex; flex-direction: column; gap: 12px; margin-top: 4px;">
+              <label class="checkbox-wrap">
+                <input type="checkbox" checked>
+                <span>Автоматично пропускати інтро серіалів</span>
+              </label>
+
+              <label class="checkbox-wrap">
+                <input type="checkbox" checked>
+                <span>Пріоритет української аудіодоріжки за замовчуванням</span>
+              </label>
+
+              <label class="toggle-switch">
+                <input type="checkbox" checked>
+                <span class="toggle-slider"></span>
+                <span>Режим Кінозалу (Автозатемнення панелей)</span>
+              </label>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 06: MEDIA CARDS & POSTER SYSTEM -->
+      <section class="kit-section">
+        <div class="kit-section-header">
+          <h2 class="kit-section-title"><span class="kit-section-num">06.</span> Медіа-картки та постери</h2>
+          <span class="badge">Cards &amp; Previews</span>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 20px;">
+          <!-- Card 1 -->
+          <div class="card-poster">
+            <div class="card-poster-thumb">
+              <div style="width: 100%; height: 100%; background: linear-gradient(135deg, #1e1b4b 0%, #0f172a 100%); display: flex; align-items: center; justify-content: center; color: var(--text-dim); font-family: var(--font-mono); font-size: 11px;">
+                [ POSTER ART ]
+              </div>
+              <div class="card-poster-overlay">
+                <div class="card-badge-top">
+                  <span class="badge badge-rating">★ 8.9</span>
+                  <span class="badge">4K UHD</span>
+                </div>
+                <div>
+                  <span class="badge badge-primary">S02 E08</span>
+                </div>
+              </div>
+            </div>
+            <div class="card-poster-meta">
+              <div class="card-title">Дім Дракона</div>
+              <div class="card-subinfo">
+                <span>2024</span>
+                <span>·</span>
+                <span>Цікава Ідея</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="card-poster">
+            <div class="card-poster-thumb">
+              <div style="width: 100%; height: 100%; background: linear-gradient(135deg, #111827 0%, #0369a1 100%); display: flex; align-items: center; justify-content: center; color: var(--text-dim); font-family: var(--font-mono); font-size: 11px;">
+                [ POSTER ART ]
+              </div>
+              <div class="card-poster-overlay">
+                <div class="card-badge-top">
+                  <span class="badge badge-rating">★ 8.7</span>
+                  <span class="badge">HDR10</span>
+                </div>
+                <div>
+                  <span class="badge">ФІЛЬМ</span>
+                </div>
+              </div>
+            </div>
+            <div class="card-poster-meta">
+              <div class="card-title">Дюна: Частина друга</div>
+              <div class="card-subinfo">
+                <span>2024</span>
+                <span>·</span>
+                <span>Дубляж</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="card-poster">
+            <div class="card-poster-thumb">
+              <div style="width: 100%; height: 100%; background: linear-gradient(135deg, #312e81 0%, #4c1d95 100%); display: flex; align-items: center; justify-content: center; color: var(--text-dim); font-family: var(--font-mono); font-size: 11px;">
+                [ POSTER ART ]
+              </div>
+              <div class="card-poster-overlay">
+                <div class="card-badge-top">
+                  <span class="badge badge-rating">★ 8.8</span>
+                  <span class="badge">4K UHD</span>
+                </div>
+                <div>
+                  <span class="badge badge-live">ОНҐОЇНҐ</span>
+                </div>
+              </div>
+            </div>
+            <div class="card-poster-meta">
+              <div class="card-title">Розрив (Severance)</div>
+              <div class="card-subinfo">
+                <span>2025</span>
+                <span>·</span>
+                <span>В одне рило</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 4: Continue watching with progress bar -->
+          <div class="card-poster">
+            <div class="card-poster-thumb">
+              <div style="width: 100%; height: 100%; background: linear-gradient(135deg, #064e3b 0%, #022c22 100%); display: flex; align-items: center; justify-content: center; color: var(--text-dim); font-family: var(--font-mono); font-size: 11px;">
+                [ POSTER ART ]
+              </div>
+              <div class="card-poster-overlay">
+                <div class="card-badge-top">
+                  <span class="badge badge-rating">★ 8.6</span>
+                  <span class="badge">4K</span>
+                </div>
+                <div style="width: 100%;">
+                  <div class="progress-bar-wrap" style="height: 4px; margin-bottom: 4px;">
+                    <div class="progress-bar-fill" style="width: 65%;"></div>
+                  </div>
+                  <div style="display: flex; justify-content: space-between; font-size: 9.5px; font-family: var(--font-mono); color: #ffffff;">
+                    <span>S01:E06</span>
+                    <span>32 хв залишилось</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="card-poster-meta">
+              <div class="card-title">Сьоґун (Shōgun)</div>
+              <div class="card-subinfo">
+                <span>2024</span>
+                <span>·</span>
+                <span>НеЗупиняй</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 07: PLAYER HUD & TELEMETRY PANEL -->
+      <section class="kit-section">
+        <div class="kit-section-header">
+          <h2 class="kit-section-title"><span class="kit-section-num">07.</span> Відеоплеєр та інструменти діагностики</h2>
+          <span class="badge">Player Telemetry HUD</span>
+        </div>
+
+        <!-- Telemetry Component Showcase -->
+        <div class="telemetry-card" style="margin-bottom: 24px;">
+          <div class="telemetry-item">
+            <span class="label">МАГІСТРАЛЬНИЙ ВУЗОЛ</span>
+            <span class="value" style="color: var(--status-live);">● UA-KYIV-DC1 (18ms)</span>
+          </div>
+          <div class="telemetry-item">
+            <span class="label">БІТРЕЙТ ТА КОДЕК</span>
+            <span class="value">28.4 Mbps · HEVC Main 10</span>
+          </div>
+          <div class="telemetry-item">
+            <span class="label">АУДІО ПОТІК</span>
+            <span class="value">Цікава Ідея · FLAC 5.1 48kHz</span>
+          </div>
+          <div class="telemetry-item">
+            <span class="label">БУФЕРИЗАЦІЯ &amp; P2P</span>
+            <span class="value">45.0 с (Кеш 100%) · 12 Seeds</span>
+          </div>
+        </div>
+
+        <!-- Scrubber and Timeline Showcase -->
+        <div style="background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: var(--radius); padding: 20px;">
+          <div class="component-label">Компонент таймлайну перегляду (Scrubber Bar)</div>
+          <div class="scrubber-bar-container" style="margin: 16px 0;">
+            <div class="scrubber-buffered" style="width: 75%;"></div>
+            <div class="scrubber-played" style="width: 42%;"></div>
+            <div class="scrubber-handle" style="left: 42%;"></div>
+          </div>
+          <div class="player-control-row">
+            <div class="player-controls-left">
+              <button class="btn btn-primary btn-sm">
+                <svg viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
+                Пауза
+              </button>
+              <button class="btn btn-outline btn-xs">-10с</button>
+              <button class="btn btn-outline btn-xs">+10с</button>
+              <span class="timecode-label">24:18 / 59:30</span>
+            </div>
+            <div class="player-controls-right">
+              <span class="badge">4K UHD</span>
+              <span class="badge">Цікава Ідея (MVO)</span>
+              <span class="badge">Укр. Субтитри</span>
+              <span class="badge">1.0x</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 08: FEEDBACK, TOASTS & NOTIFICATIONS -->
+      <section class="kit-section">
+        <div class="kit-section-header">
+          <h2 class="kit-section-title"><span class="kit-section-num">08.</span> Системні сповіщення та повідомлення</h2>
+          <span class="badge">Toasts &amp; Alerts</span>
+        </div>
+
+        <div style="display: flex; flex-direction: column; gap: 12px; max-width: 600px;">
+          <div class="toast-notification success">
+            <span class="status-dot status-dot-live"></span>
+            <span><strong>Збережено у медіатеку:</strong> «Дім Дракона: Сезон 2» додано до обраного списку.</span>
+          </div>
+
+          <div class="toast-notification">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--accent-primary)" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+            <span><strong>Новий епізод:</strong> Вийшла 8-ма серія у 4K з озвучкою від студії «Цікава Ідея».</span>
+          </div>
+
+          <div class="toast-notification warning">
+            <span class="status-dot status-dot-warn"></span>
+            <span><strong>Оптимізація вузла:</strong> Переключено на резервний CDN Frankfurt (пінг 34ms).</span>
+          </div>
+
+          <div class="toast-notification danger">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--status-danger)" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg>
+            <span><strong>Помилка сесії:</strong> Не вдалося оновити токен вузла. Перевірте з'єднання.</span>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- 3. FOOTER -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <div>
+          <span>© 2026 ДИВИЛО МЕДІА-ХАБ · СИСТЕМА ДИЗАЙНУ LAB2 · АВТОР: SESPURE</span>
+        </div>
+        <div style="display: flex; gap: 16px; align-items: center;">
+          <span class="node-telemetry-badge">
+            <span class="status-dot status-dot-live"></span>
+            <span>FIGMA COMPONENT LIB: ONLINE</span>
+          </span>
+          <span>ВЕРСІЯ: 2.4.0-DEV</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
