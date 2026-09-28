@@ -3,9 +3,7 @@
  * Standardized components ready for high-fidelity rendering and Figma import.
  */
 
-/* ==========================================================================
-   1. BUTTONS & ACTIONS
-   ========================================================================== */
+/* ==========================================================================\n   1. BUTTONS & ACTIONS\n   ========================================================================== */
 
 .btn {
   display: inline-flex;
@@ -24,6 +22,9 @@
   white-space: nowrap;
   transition: all var(--transition-fast);
   user-select: none;
+  outline: none;
+  -webkit-appearance: none;
+  appearance: none;
 }
 
 .btn svg {
@@ -146,9 +147,7 @@
 }
 
 
-/* ==========================================================================
-   2. BADGES, CHIPS & STATUS INDICATORS
-   ========================================================================== */
+/* ==========================================================================\n   2. BADGES, CHIPS & STATUS INDICATORS\n   ========================================================================== */
 
 .badge {
   display: inline-flex;
@@ -174,8 +173,7 @@
 }
 
 .badge-rating {
-  background: rgba(234, 179, 8, 0.12);
-  border-color: rgba(234, 179, 8, 0.35);
+  background: rgba(234, 179, 8, 0.12);\n  border-color: rgba(234, 179, 8, 0.35);
   color: #facc15;
   font-weight: 700;
 }
@@ -250,9 +248,7 @@
 }
 
 
-/* ==========================================================================
-   3. FORM INPUTS & SELECTION CONTROLS
-   ========================================================================== */
+/* ==========================================================================\n   3. FORM INPUTS & SELECTION CONTROLS\n   ========================================================================== */
 
 .form-group {
   display: flex;
@@ -312,8 +308,7 @@
   transition: border-color var(--transition-fast), width var(--transition);
 }
 
-.search-bar:focus-within {
-  border-color: var(--border-focus);
+.search-bar:focus-within {\n  border-color: var(--border-focus);
 }
 
 .search-bar input {
@@ -428,9 +423,7 @@
 }
 
 
-/* ==========================================================================
-   4. CARDS & MEDIA PREVIEWS
-   ========================================================================== */
+/* ==========================================================================\n   4. CARDS & MEDIA PREVIEWS\n   ========================================================================== */
 
 /* Vertical Poster Card */
 .card-poster {
@@ -611,9 +604,7 @@
 }
 
 
-/* ==========================================================================
-   5. NAVIGATION & HEADER PILLS
-   ========================================================================== */
+/* ==========================================================================\n   5. NAVIGATION & HEADER PILLS\n   ========================================================================== */
 
 .site-header {
   width: 100%;
@@ -766,33 +757,46 @@
 /* Segmented Control Tabs */
 .tabs-segmented {
   display: inline-flex;
+  align-items: center;
   background: var(--bg-surface);
-  border: 1px solid var(--border-main);
+  border: 1px solid var(--border-subtle);
   border-radius: var(--radius);
   padding: 3px;
   gap: 2px;
 }
 
 .tab-item {
-  padding: 5px 12px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 14px;
+  font-family: var(--font-mono);
   font-size: var(--font-size-xs);
   font-weight: 500;
   color: var(--text-muted);
+  background: transparent;
+  border: 1px solid transparent;
   border-radius: var(--radius-xs);
   text-decoration: none;
   cursor: pointer;
-  transition: all var(--transition-fast);
+  white-space: nowrap;
+  outline: none;
+  -webkit-appearance: none;
+  appearance: none;
+  transition: color var(--transition-fast), background-color var(--transition-fast), border-color var(--transition-fast), box-shadow var(--transition-fast);
 }
 
 .tab-item:hover {
   color: #ffffff;
+  background: rgba(255, 255, 255, 0.04);
 }
 
 .tab-item.active {
   background: var(--bg-elevated);
+  border-color: var(--border-main);
   color: #ffffff;
   font-weight: 600;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
 }
 
 /* Breadcrumbs */
@@ -818,9 +822,7 @@
 }
 
 
-/* ==========================================================================
-   6. PLAYER HUD & TELEMETRY
-   ========================================================================== */
+/* ==========================================================================\n   6. PLAYER HUD & TELEMETRY\n   ========================================================================== */
 
 .player-viewport {
   width: 100%;
@@ -973,9 +975,7 @@
 }
 
 
-/* ==========================================================================
-   7. MODALS, TOASTS & OVERLAYS
-   ========================================================================== */
+/* ==========================================================================\n   7. MODALS, TOASTS & OVERLAYS\n   ========================================================================== */
 
 .modal-backdrop {
   position: fixed;

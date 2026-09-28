@@ -155,6 +155,9 @@
   border: 1px solid transparent;
   padding: 8px 14px;
   white-space: nowrap;
+  outline: none;
+  -webkit-appearance: none;
+  appearance: none;
   transition: all var(--transition-fast);
   user-select: none;
 }
@@ -899,33 +902,46 @@
 /* Segmented Control Tabs */
 .tabs-segmented {
   display: inline-flex;
+  align-items: center;
   background: var(--bg-surface);
-  border: 1px solid var(--border-main);
+  border: 1px solid var(--border-subtle);
   border-radius: var(--radius);
   padding: 3px;
   gap: 2px;
 }
 
 .tab-item {
-  padding: 5px 12px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 14px;
+  font-family: var(--font-mono);
   font-size: var(--font-size-xs);
   font-weight: 500;
   color: var(--text-muted);
+  background: transparent;
+  border: 1px solid transparent;
   border-radius: var(--radius-xs);
   text-decoration: none;
   cursor: pointer;
-  transition: all var(--transition-fast);
+  white-space: nowrap;
+  outline: none;
+  -webkit-appearance: none;
+  appearance: none;
+  transition: color var(--transition-fast), background-color var(--transition-fast), border-color var(--transition-fast), box-shadow var(--transition-fast);
 }
 
 .tab-item:hover {
   color: #ffffff;
+  background: rgba(255, 255, 255, 0.04);
 }
 
 .tab-item.active {
   background: var(--bg-elevated);
+  border-color: var(--border-main);
   color: #ffffff;
   font-weight: 600;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
 }
 
 /* Breadcrumbs */
@@ -1204,6 +1220,27 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+}
+
+button,
+input,
+optgroup,
+select,
+textarea {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  color: inherit;
+  margin: 0;
+}
+
+button {
+  background: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  -webkit-appearance: none;
+  appearance: none;
 }
 
 html {
@@ -1888,6 +1925,20 @@ body {
               <button class="btn btn-secondary" disabled>Вимкнено (Disabled)</button>
             </div>
           </div>
+
+          <div>
+            <div class="component-label">Сегментовані перемикачі (Segmented Control Tabs)</div>
+            <div class="component-row" style="gap: 16px;">
+              <div class="tabs-segmented">
+                <button type="button" class="tab-item">Сезон 1 (10 серій)</button>
+                <button type="button" class="tab-item active">Сезон 2 (8 серій · 2024)</button>
+              </div>
+              <div class="tabs-segmented">
+                <button type="button" class="tab-item active" title="Сітка">☵</button>
+                <button type="button" class="tab-item" title="Список">☰</button>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -2175,5 +2226,14 @@ body {
     </div>
   </footer>
 
+  <script>
+    document.querySelectorAll(".tabs-segmented .tab-item").forEach(btn => {
+      btn.addEventListener("click", (e) => {
+        e.preventDefault();
+        btn.closest(".tabs-segmented").querySelectorAll(".tab-item").forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+      });
+    });
+  </script>
 </body>
 </html>

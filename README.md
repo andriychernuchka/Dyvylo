@@ -12,6 +12,7 @@
 - 📖 **[lab2/README.md](lab2/README.md)** — Детальний опис дизайн-системи, токенів.
 - 🎨 **[lab2/components.html](lab2/components.html)** — Майстер UI Kit & Design System (єдиний повністю автономний артборд).
 - 🧩 **[lab2/uicomponents/](lab2/uicomponents/)** — 20 модульних ізольованих компонентів для поблочного імпорту в Figma.
+- 🖼️ **[lab2/design/](lab2/design/)** — Експортовані графічні макети ключових сторінок та UI Kit (`home_page.jpg`, `title_page.jpg`, `profile.jpg`, `ui_kit.jpg`).
 - 🖥 **Ключові сторінки**:
   - `lab2/index.html` — Головна вітрина та каталог
   - `lab2/player.html` — Повноекранний відеоплеєр із HUD телеметрією стріму
