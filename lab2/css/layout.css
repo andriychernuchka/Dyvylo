@@ -1,0 +1,262 @@
+/**
+ * DYVYLO DESIGN SYSTEM - LAYOUT & UTILITIES
+ * Page scaffolding, grid systems, and structural layouts.
+ */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+button,
+input,
+optgroup,
+select,
+textarea {
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    color: inherit;
+    margin: 0;
+}
+
+button {
+    background: transparent;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+html {
+    font-size: 16px;
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--bg-page);
+    color: var(--text-main);
+    font-family: var(--font-sans);
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11", "tnum";
+    min-height: 100vh;
+    line-height: var(--line-height-normal);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+::selection {
+    background: var(--accent-primary);
+    color: #ffffff;
+}
+
+/* ==========================================================================\n   1. CONTAINERS & WRAPPERS\n   ========================================================================== */
+
+.container {
+    width: 100%;
+    max-width: var(--container-max);
+    margin: 0 auto;
+    padding: 0 var(--space-6);
+}
+
+.container-narrow {
+    width: 100%;
+    max-width: var(--container-narrow);
+    margin: 0 auto;
+    padding: 0 var(--space-6);
+}
+
+.main-content {
+    flex: 1;
+    padding-bottom: var(--space-16);
+}
+
+/* ==========================================================================\n   2. GRID SYSTEMS (FIGMA & RESPONSIVE FRIENDLY)\n   ========================================================================== */
+
+.grid-posters {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: var(--space-5);
+}
+
+.grid-episodes {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: var(--space-4);
+}
+
+.grid-2col {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-6);
+}
+
+.grid-3col {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-6);
+}
+
+.grid-4col {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-5);
+}
+
+.grid-sidebar-layout {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: var(--space-8);
+    align-items: start;
+}
+
+.grid-title-layout {
+    display: grid;
+    grid-template-columns: 320px 1fr;
+    gap: var(--space-8);
+    align-items: start;
+}
+
+/* ==========================================================================\n   3. SECTION HEADER PATTERNS\n   ========================================================================== */
+
+.section-block {
+    margin-top: var(--space-10);
+}
+
+.section-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: var(--space-5);
+    border-bottom: 1px solid var(--border-subtle);
+    padding-bottom: var(--space-3);
+}
+
+.section-title-wrap {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+}
+
+.section-title {
+    font-size: var(--font-size-xl);
+    font-weight: 700;
+    letter-spacing: -0.3px;
+    color: var(--text-main);
+    text-transform: uppercase;
+    font-family: var(--font-mono);
+}
+
+.section-count {
+    font-size: var(--font-size-xs);
+    font-family: var(--font-mono);
+    color: var(--text-dim);
+}
+
+/* ==========================================================================\n   4. SITE FOOTER\n   ========================================================================== */
+
+.site-footer {
+    background: #060608;
+    border-top: 1px solid var(--border-subtle);
+    padding: var(--space-12) 0 var(--space-8) 0;
+    color: var(--text-dim);
+    font-size: var(--font-size-xs);
+}
+
+.footer-top {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: var(--space-8);
+    margin-bottom: var(--space-10);
+}
+
+.footer-col-brand {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.footer-desc {
+    font-size: var(--font-size-sm);
+    color: var(--text-muted);
+    line-height: 1.6;
+    max-width: 380px;
+}
+
+.footer-col {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.footer-heading {
+    font-size: var(--font-size-xs);
+    font-weight: 700;
+    color: var(--text-main);
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    font-family: var(--font-mono);
+    margin-bottom: 4px;
+}
+
+.footer-links {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.footer-links a {
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: color var(--transition-fast);
+}
+
+.footer-links a:hover {
+    color: var(--accent-primary);
+}
+
+.footer-bottom {
+    border-top: 1px solid var(--border-divider);
+    padding-top: var(--space-6);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-family: var(--font-mono);
+    font-size: 11px;
+}
+
+.node-telemetry-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 3px 8px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-xs);
+}
+
+/* ==========================================================================\n   5. RESPONSIVE BREAKPOINTS\n   ========================================================================== */
+
+@media (max-width: 1024px) {
+    .grid-sidebar-layout,
+    .grid-title-layout {
+        grid-template-columns: 1fr;
+    }
+    .footer-top {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .site-nav {
+        display: none;
+    }
+    .grid-posters {
+        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    }
+}

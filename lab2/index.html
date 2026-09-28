@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ДИВИЛО — Каталог, стрімінг та українська локалізація</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <style>
+    /* Hero Spotlight Specific Styles */
+    .hero-spotlight {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 32px;
+      padding: 36px 0;
+      align-items: center;
+      border-bottom: 1px solid var(--border-subtle);
+      margin-bottom: 32px;
+    }
+    .hero-info-col {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .hero-meta-strip {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px;
+    }
+    .hero-title {
+      font-size: 42px;
+      font-weight: 800;
+      letter-spacing: -0.8px;
+      line-height: 1.1;
+      text-transform: uppercase;
+      font-family: var(--font-mono);
+    }
+    .hero-desc {
+      font-size: 15px;
+      color: var(--text-muted);
+      line-height: 1.6;
+      max-width: 620px;
+    }
+    .hero-actions-row {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 8px;
+    }
+    .hero-visual-frame {
+      background: radial-gradient(circle at center, #1e1b4b 0%, #09090e 100%);
+      border: 1px solid var(--border-main);
+      border-radius: var(--radius);
+      aspect-ratio: 16 / 9;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 20px;
+      text-decoration: none;
+      position: relative;
+      overflow: hidden;
+      box-shadow: var(--shadow-lg);
+      transition: border-color var(--transition-fast), transform var(--transition-fast);
+    }
+    .hero-visual-frame:hover {
+      border-color: var(--accent-primary);
+      transform: translateY(-2px);
+    }
+    .hero-visual-guides {
+      display: flex;
+      justify-content: space-between;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+    .hero-visual-center {
+      align-self: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+    .hero-mini-play {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: var(--accent-primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #ffffff;
+      box-shadow: var(--shadow-glow);
+    }
+    .hero-mini-play svg {
+      width: 22px;
+      height: 22px;
+      margin-left: 3px;
+    }
+    .manifesto-panel {
+      background: #09090d;
+      border: 1px solid var(--border-main);
+      border-radius: var(--radius);
+      padding: 32px;
+      margin-top: 56px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+    }
+    @media (max-width: 900px) {
+      .hero-spotlight {
+        grid-template-columns: 1fr;
+      }
+      .manifesto-panel {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- SITE HEADER -->
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="header-left">
+        <a href="index.html" class="brand-logo-wrap">
+          <div class="brand-mark-square">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+              <circle cx="12" cy="12" r="3"></circle>
+            </svg>
+          </div>
+          <div class="brand-text">
+            <span class="brand-name">ДИВИЛО<span class="brand-dot">.</span></span>
+            <span class="brand-slogan">медіа-архів &amp; вузол</span>
+          </div>
+        </a>
+
+        <nav class="site-nav">
+          <a href="index.html" class="active">Каталог</a>
+          <a href="search.html?type=movies">Фільми</a>
+          <a href="search.html?type=series">Серіали</a>
+          <a href="search.html?type=anime">Аніме</a>
+          <a href="player.html">Плеєр</a>
+          <a href="components.html">UI Kit</a>
+        </nav>
+      </div>
+
+      <div class="header-right">
+        <button class="btn btn-outline btn-sm" title="Випадковий фільм або серіал">
+          <svg viewBox="0 0 24 24" fill="none" stroke="var(--accent-primary)" stroke-width="2"><polyline points="16 3 21 3 21 8"></polyline><line x1="4" y1="20" x2="21" y2="3"></line><polyline points="21 16 21 21 16 21"></polyline><line x1="15" y1="15" x2="21" y2="21"></line><line x1="4" y1="4" x2="9" y2="9"></line></svg>
+          Випадковий реліз
+        </button>
+
+        <a href="search.html" class="search-bar" style="text-decoration: none;">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+          <input type="text" placeholder="Швидкий пошук..." readonly>
+          <span class="search-shortcut">⌘K</span>
+        </a>
+
+        <a href="profile.html" class="user-pill" title="Особистий кабінет">
+          <div class="user-avatar">S</div>
+          <span style="font-family: var(--font-mono); font-weight: 600;">@sespure</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN CONTENT -->
+  <main class="main-content">
+    <div class="container">
+
+      <!-- 1. HERO SPOTLIGHT -->
+      <section class="hero-spotlight">
+        <div class="hero-info-col">
+          <div class="hero-meta-strip">
+            <span class="badge badge-primary">ПРЯМО ЗАРАЗ У ПЛЕЄРІ</span>
+            <span class="badge badge-rating">★ IMDb 8.9</span>
+            <span class="badge">18+</span>
+            <span class="badge">4K UHD</span>
+            <span class="badge">HDR10+</span>
+            <span class="badge">2024</span>
+          </div>
+
+          <h1 class="hero-title">Дім Дракона</h1>
+
+          <p class="hero-desc">
+            Вестерос на межі розколу. Поки Крістон Коль веде об'єднане військо Зелених через Королівські землі, біля Грачиного Притулку розпочинається перша повномасштабна повітряна дуель драконів. Повна українська локалізація від команди «Цікава Ідея».
+          </p>
+
+          <div class="hero-actions-row">
+            <a href="player.html" class="btn btn-primary btn-lg">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+              Дивитися S02:E04 (59 хв)
+            </a>
+
+            <button class="btn btn-secondary btn-lg">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>
+              У збережені
+            </button>
+
+            <a href="title.html" class="btn btn-outline btn-lg">
+              Всі серії та деталі →
+            </a>
+
+            <span style="font-size: 11px; color: var(--text-dim); font-family: var(--font-mono); margin-left: 4px;">
+              Вузол #1 Київ · 19ms
+            </span>
+          </div>
+        </div>
+
+        <a href="player.html" class="hero-visual-frame" title="Клікніть, щоб запустити епізод у плеєрі">
+          <div class="hero-visual-guides">
+            <span>[ S02:E04 · ТАНЕЦЬ ДРАКОНІВ ]</span>
+            <span>4K · 24FPS · 28.4 MBPS</span>
+          </div>
+
+          <div class="hero-visual-center">
+            <div class="hero-mini-play">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+            </div>
+            <span class="badge badge-primary">ПРОДОВЖИТИ З 24:18</span>
+          </div>
+
+          <div class="hero-visual-guides">
+            <span>ЦІКАВА ІДЕЯ (MVO)</span>
+            <span>ТРИВАЛІСТЬ: 59:30</span>
+          </div>
+        </a>
+      </section>
+
+      <!-- 2. RESUME WATCHING SECTION -->
+      <section class="section-block">
+        <div class="section-header">
+          <div class="section-title-wrap">
+            <h2 class="section-title">Продовжити перегляд</h2>
+            <span class="section-count">[ 3 незавершених тайтли ]</span>
+          </div>
+          <a href="profile.html" class="btn btn-ghost btn-sm">Вся історія →</a>
+        </div>
+
+        <div class="grid-episodes">
+          <!-- Item 1 -->
+          <a href="player.html" class="card-episode active">
+            <div class="card-episode-thumb">
+              <div style="width: 100%; height: 100%; background: linear-gradient(135deg, #1e1b4b, #0f172a); display: flex; align-items: center; justify-content: center; font-family: var(--font-mono); font-size: 10px; color: var(--text-dim);">
+                [ S02:E04 ]
+              </div>
+              <span class="card-episode-duration">24:18 / 59:30</span>
+            </div>
+            <div class="card-episode-info">
+              <span class="card-episode-num">ДІМ ДРАКОНА · S02:E04</span>
+              <span class="card-episode-title">Червоний дракон і золотий</span>
+              <div class="progress-bar-wrap" style="margin-top: 4px;">
+                <div class="progress-bar-fill" style="width: 42%;"></div>
+              </div>
+            </div>
+          </a>
+
+          <!-- Item 2 -->
+          <a href="player.html" class="card-episode">
+            <div class="card-episode-thumb">
+              <div style="width: 100%; height: 100%; background: linear-gradient(135deg, #022c22, #064e3b); display: flex; align-items: center; justify-content: center; font-family: var(--font-mono); font-size: 10px; color: var(--text-dim);">
+                [ S01:E06 ]
+              </div>
+              <span class="card-episode-duration">38:10 / 58:00</span>
+            </div>
+            <div class="card-episode-info">
+              <span class="card-episode-num">СЬОҐУН (SHŌGUN) · S01:E06</span>
+              <span class="card-episode-title">Дами вербового світу</span>
+              <div class="progress-bar-wrap" style="margin-top: 4px;">
+                <div class="progress-bar-fill" style="width: 66%;"></div>
+              </div>
+            </div>
+          </a>
+
+          <!-- Item 3 -->
+          <a href="player.html" class="card-episode">
+            <div class="card-episode-thumb">
+              <div style="width: 100%; height: 100%; background: linear-gradient(135deg, #312e81, #1e1b4b); display: flex; align-items: center; justify-content: center; font-family: var(--font-mono); font-size: 10px; color: var(--text-dim);">
+                [ S01:E09 ]
+              </div>
+              <span class="card-episode-duration">44:00 / 48:20</span>
+            </div>
+            <div class="card-episode-info">
+              <span class="card-episode-num">РОЗРИВ (SEVERANCE) · S01:E09</span>
+              <span class="card-episode-title">Ми такі, які ми є</span>
+              <div class="progress-bar-wrap" style="margin-top: 4px;">
+                <div class="progress-bar-fill" style="width: 90%;"></div>
+              </div>
+            </div>
+          </a>
+        </div>
+      </section>
+
+      <!-- 3. TRENDING ROW -->
+      <section class="section-block">
+        <div class="section-header">
+          <div class="section-title-wrap">
+            <h2 class="section-title">Популярні серіали</h2>
+            <span class="section-count">Найвищий бітрейт та локалізація</span>
+          </div>
+          <div style="display: flex; gap: 8px;">
+            <button class="btn btn-outline btn-sm">Всі новинки</button>
+            <button class="btn btn-secondary btn-sm">Топ місяця</button>
+          </div>
+        </div>
+
+        <div class="grid-posters">
+          <!-- Poster 1 -->
+          <a href="title.html" class="card-poster">
+            <div class="card-poster-thumb">
+              <div style="width:100%;height:100%;background:linear-gradient(135deg,#1e1b4b,#0f172a);display:flex;align-items:center;justify-content:center;color:var(--text-dim);font-family:var(--font-mono);font-size:11px;">[ POSTER ]</div>
+              <div class="card-poster-overlay">
+                <div class="card-badge-top">
+                  <span class="badge badge-rating">★ 8.9</span>
+                  <span class="badge">4K</span>
+                </div>
+                <div><span class="badge badge-primary">S02 ФІНАЛ</span></div>
+              </div>
+            </div>
+            <div class="card-poster-meta">
+              <div class="card-title">Дім Дракона</div>
+              <div class="card-subinfo"><span>2024</span><span>·</span><span>Цікава Ідея</span></div>
+            </div>
+          </a>
+
+          <!-- Poster 2 -->
+          <a href="title.html" class="card-poster">
+            <div class="card-poster-thumb">
+              <div style="width:100%;height:100%;background:linear-gradient(135deg,#064e3b,#022c22);display:flex;align-items:center;justify-content:center;color:var(--text-dim);font-family:var(--font-mono);font-size:11px;">[ POSTER ]</div>
+              <div class="card-poster-overlay">
+                <div class="card-badge-top">
+                  <span class="badge badge-rating">★ 8.7</span>
+                  <span class="badge">HDR10</span>
+                </div>
+                <div><span class="badge">1 СЕЗОН</span></div>
+              </div>
+            </div>
+            <div class="card-poster-meta">
+              <div class="card-title">Сьоґун (Shōgun)</div>
+              <div class="card-subinfo"><span>2024</span><span>·</span><span>НеЗупиняй</span></div>
+            </div>
+          </a>
+
+          <!-- Poster 3 -->
+          <a href="title.html" class="card-poster">
+            <div class="card-poster-thumb">
+              <div style="width:100%;height:100%;background:linear-gradient(135deg,#312e81,#4c1d95);display:flex;align-items:center;justify-content:center;color:var(--text-dim);font-family:var(--font-mono);font-size:11px;">[ POSTER ]</div>
+              <div class="card-poster-overlay">
+                <div class="card-badge-top">
+                  <span class="badge badge-rating">★ 8.8</span>
+                  <span class="badge">4K</span>
+                </div>
+                <div><span class="badge badge-live">ОНҐОЇНҐ</span></div>
+              </div>
+            </div>
+            <div class="card-poster-meta">
+              <div class="card-title">Розрив (Severance)</div>
+              <div class="card-subinfo"><span>2025</span><span>·</span><span>В одне рило</span></div>
+            </div>
+          </a>
+
+          <!-- Poster 4 -->
+          <a href="title.html" class="card-poster">
+            <div class="card-poster-thumb">
+              <div style="width:100%;height:100%;background:linear-gradient(135deg,#78350f,#451a03);display:flex;align-items:center;justify-content:center;color:var(--text-dim);font-family:var(--font-mono);font-size:11px;">[ POSTER ]</div>
+              <div class="card-poster-overlay">
+                <div class="card-badge-top">
+                  <span class="badge badge-rating">★ 8.5</span>
+                  <span class="badge">4K UHD</span>
+                </div>
+                <div><span class="badge">S01</span></div>
+              </div>
+            </div>
+            <div class="card-poster-meta">
+              <div class="card-title">Фолаут (Fallout)</div>
+              <div class="card-subinfo"><span>2024</span><span>·</span><span>DniproFilm</span></div>
+            </div>
+          </a>
+
+          <!-- Poster 5 -->
+          <a href="title.html" class="card-poster">
+            <div class="card-poster-thumb">
+              <div style="width:100%;height:100%;background:linear-gradient(135deg,#831843,#500724);display:flex;align-items:center;justify-content:center;color:var(--text-dim);font-family:var(--font-mono);font-size:11px;">[ POSTER ]</div>
+              <div class="card-poster-overlay">
+                <div class="card-badge-top">
+                  <span class="badge badge-rating">★ 8.7</span>
+                  <span class="badge">HDR</span>
+                </div>
+                <div><span class="badge">S04</span></div>
+              </div>
+            </div>
+            <div class="card-poster-meta">
+              <div class="card-title">Хлопаки (The Boys)</div>
+              <div class="card-subinfo"><span>2024</span><span>·</span><span>Цікава Ідея</span></div>
+            </div>
+          </a>
+
+          <!-- Poster 6 -->
+          <a href="title.html" class="card-poster">
+            <div class="card-poster-thumb">
+              <div style="width:100%;height:100%;background:linear-gradient(135deg,#134e4a,#042f2e);display:flex;align-items:center;justify-content:center;color:var(--text-dim);font-family:var(--font-mono);font-size:11px;">[ POSTER ]</div>
+              <div class="card-poster-overlay">
+                <div class="card-badge-top">
+                  <span class="badge badge-rating">★ 9.0</span>
+                  <span class="badge">4K</span>
+                </div>
+                <div><span class="badge badge-primary">S02 ФІНАЛ</span></div>
+              </div>
+            </div>
+            <div class="card-poster-meta">
+              <div class="card-title">Аркейн (Arcane)</div>
+              <div class="card-subinfo"><span>2024</span><span>·</span><span>Дубляж</span></div>
+            </div>
+          </a>
+        </div>
+      </section>
+
+      <!-- 4. MOVIES IN 4K HDR -->
+      <section class="section-block">
+        <div class="section-header">
+          <div class="section-title-wrap">
+            <h2 class="section-title">Кінопрем'єри у 4K Ultra HD</h2>
+            <span class="section-count">Незжатий звук Dolby Atmos</span>
+          </div>
+          <a href="search.html?type=movies" class="btn btn-ghost btn-sm">Всі фільми →</a>
+        </div>
+
+        <div class="grid-posters">
+          <!-- Movie 1 -->
+          <a href="title.html" class="card-poster">
+            <div class="card-poster-thumb">
+              <div style="width:100%;height:100%;background:linear-gradient(135deg,#111827,#0369a1);display:flex;align-items:center;justify-content:center;color:var(--text-dim);font-family:var(--font-mono);font-size:11px;">[ POSTER ]</div>
+              <div class="card-poster-overlay">
+                <div class="card-badge-top">
+                  <span class="badge badge-rating">★ 8.6</span>
+                  <span class="badge">4K UHD</span>
+                </div>
+                <div><span class="badge">2h 46m</span></div>
+              </div>
+            </div>
+            <div class="card-poster-meta">
+              <div class="card-title">Дюна: Частина друга</div>
+              <div class="card-subinfo"><span>2024</span><span>·</span><span>Офіційний дубляж</span></div>
+            </div>
+          </a>
+
+          <!-- Movie 2 -->
+          <a href="title.html" class="card-poster">
+            <div class="card-poster-thumb">
+              <div style="width:100%;height:100%;background:linear-gradient(135deg,#1c1917,#44403c);display:flex;align-items:center;justify-content:center;color:var(--text-dim);font-family:var(--font-mono);font-size:11px;">[ POSTER ]</div>
+              <div class="card-poster-overlay">
+                <div class="card-badge-top">
+                  <span class="badge badge-rating">★ 7.3</span>
+                  <span class="badge">IMAX 4K</span>
+                </div>
+                <div><span class="badge">1h 59m</span></div>
+              </div>
+            </div>
+            <div class="card-poster-meta">
+              <div class="card-title">Чужий: Ромул</div>
+              <div class="card-subinfo"><span>2024</span><span>·</span><span>Дубляж</span></div>
+            </div>
+          </a>
+
+          <!-- Movie 3 -->
+          <a href="title.html" class="card-poster">
+            <div class="card-poster-thumb">
+              <div style="width:100%;height:100%;background:linear-gradient(135deg,#374151,#1f2937);display:flex;align-items:center;justify-content:center;color:var(--text-dim);font-family:var(--font-mono);font-size:11px;">[ POSTER ]</div>
+              <div class="card-poster-overlay">
+                <div class="card-badge-top">
+                  <span class="badge badge-rating">★ 8.9</span>
+                  <span class="badge">4K</span>
+                </div>
+                <div><span class="badge">3h 00m</span></div>
+              </div>
+            </div>
+            <div class="card-poster-meta">
+              <div class="card-title">Оппенгеймер</div>
+              <div class="card-subinfo"><span>2023</span><span>·</span><span>Дубляж</span></div>
+            </div>
+          </a>
+
+          <!-- Movie 4 -->
+          <a href="title.html" class="card-poster">
+            <div class="card-poster-thumb">
+              <div style="width:100%;height:100%;background:linear-gradient(135deg,#042f2e,#115e59);display:flex;align-items:center;justify-content:center;color:var(--text-dim);font-family:var(--font-mono);font-size:11px;">[ POSTER ]</div>
+              <div class="card-poster-overlay">
+                <div class="card-badge-top">
+                  <span class="badge badge-rating">★ 8.0</span>
+                  <span class="badge">HDR10+</span>
+                </div>
+                <div><span class="badge">2h 43m</span></div>
+              </div>
+            </div>
+            <div class="card-poster-meta">
+              <div class="card-title">Той, хто біжить по лезу 2049</div>
+              <div class="card-subinfo"><span>2017</span><span>·</span><span>Дубляж</span></div>
+            </div>
+          </a>
+
+          <!-- Movie 5 -->
+          <a href="title.html" class="card-poster">
+            <div class="card-poster-thumb">
+              <div style="width:100%;height:100%;background:linear-gradient(135deg,#1e1b4b,#2e1065);display:flex;align-items:center;justify-content:center;color:var(--text-dim);font-family:var(--font-mono);font-size:11px;">[ POSTER ]</div>
+              <div class="card-poster-overlay">
+                <div class="card-badge-top">
+                  <span class="badge badge-rating">★ 8.7</span>
+                  <span class="badge">4K</span>
+                </div>
+                <div><span class="badge">2h 49m</span></div>
+              </div>
+            </div>
+            <div class="card-poster-meta">
+              <div class="card-title">Інтерстеллар</div>
+              <div class="card-subinfo"><span>2014</span><span>·</span><span>Дубляж</span></div>
+            </div>
+          </a>
+
+          <!-- Movie 6 -->
+          <a href="title.html" class="card-poster">
+            <div class="card-poster-thumb">
+              <div style="width:100%;height:100%;background:linear-gradient(135deg,#1f2937,#111827);display:flex;align-items:center;justify-content:center;color:var(--text-dim);font-family:var(--font-mono);font-size:11px;">[ POSTER ]</div>
+              <div class="card-poster-overlay">
+                <div class="card-badge-top">
+                  <span class="badge badge-rating">★ 7.8</span>
+                  <span class="badge">4K UHD</span>
+                </div>
+                <div><span class="badge">2h 56m</span></div>
+              </div>
+            </div>
+            <div class="card-poster-meta">
+              <div class="card-title">Бетмен (The Batman)</div>
+              <div class="card-subinfo"><span>2022</span><span>·</span><span>Дубляж</span></div>
+            </div>
+          </a>
+        </div>
+      </section>
+
+      <!-- 5. ARCHITECTURAL MANIFESTO & TELEMETRY -->
+      <section class="manifesto-panel">
+        <div>
+          <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 12px;">
+            <span class="badge badge-primary">МАНІФЕСТ ДИВИЛА</span>
+            <span class="badge badge-live"><span class="status-dot status-dot-live"></span> P2P СІТКА</span>
+          </div>
+          <h3 style="font-size: 22px; font-weight: 700; font-family: var(--font-mono); margin-bottom: 12px;">
+            НЕ ПРОСТО СТРІМІНГ. ЦИФРОВИЙ АРХІВ.
+          </h3>
+          <p style="font-size: 14px; color: var(--text-muted); line-height: 1.6;">
+            «Дивило» створено для тих, хто поважає чистий оригінальний бітрейт, збереження культурної спадщини українського дубляжу та відсутність реклами чи нав'язливих трекерів. Робота сервісу базується на прямих вузлах роздачі та децентралізованому кеші.
+          </p>
+        </div>
+
+        <div style="display: flex; flex-direction: column; justify-content: space-between; gap: 16px;">
+          <div class="telemetry-card">
+            <div class="telemetry-item">
+              <span class="label">АКТИВНИЙ ВУЗОЛ</span>
+              <span class="value" style="color: var(--status-live);">UA-KYIV-DC1</span>
+            </div>
+            <div class="telemetry-item">
+              <span class="label">ЛАТЕНТНІСТЬ</span>
+              <span class="value">18.2 ms</span>
+            </div>
+            <div class="telemetry-item">
+              <span class="label">КАТАЛОГ СЕРІЙ</span>
+              <span class="value">14,280+</span>
+            </div>
+            <div class="telemetry-item">
+              <span class="label">ДОСТУПНІСТЬ</span>
+              <span class="value">99.98%</span>
+            </div>
+          </div>
+
+          <div style="display: flex; gap: 12px; align-items: center;">
+            <a href="profile.html#node" class="btn btn-secondary btn-sm">Підключити власний вузол</a>
+            <a href="components.html" class="btn btn-outline btn-sm">Переглянути UI Kit</a>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- SITE FOOTER -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-col-brand">
+          <a href="index.html" class="brand-logo-wrap">
+            <div class="brand-mark-square">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                <circle cx="12" cy="12" r="3"></circle>
+              </svg>
+            </div>
+            <div class="brand-text">
+              <span class="brand-name">ДИВИЛО<span class="brand-dot">.</span></span>
+              <span class="brand-slogan">медіа-архів &amp; вузол</span>
+            </div>
+          </a>
+          <p class="footer-desc">
+            Український архітектурний медіа-архів. Вільний доступ до світового кінематографа з найкращою українською озвучкою та кришталевою якістю.
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <div class="footer-heading">Навігація</div>
+          <ul class="footer-links">
+            <li><a href="index.html">Головна каталогу</a></li>
+            <li><a href="search.html?type=movies">Фільми у 4K</a></li>
+            <li><a href="search.html?type=series">Серіали та онґоїнґи</a></li>
+            <li><a href="search.html?type=anime">Аніме-архів</a></li>
+            <li><a href="player.html">Телеметрія плеєра</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <div class="footer-heading">Студії озвучки</div>
+          <ul class="footer-links">
+            <li><a href="search.html?dub=tsikava">Цікава Ідея</a></li>
+            <li><a href="search.html?dub=nezupynyay">НеЗупиняйПродакшн</a></li>
+            <li><a href="search.html?dub=vodnerylo">В одне рило</a></li>
+            <li><a href="search.html?dub=dniprofilm">DniproFilm</a></li>
+            <li><a href="search.html?dub=baibako">BaibaKo</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <div class="footer-heading">Система &amp; Документація</div>
+          <ul class="footer-links">
+            <li><a href="components.html">Design System / UI Kit</a></li>
+            <li><a href="profile.html">Особистий кабінет</a></li>
+            <li><a href="auth.html">Вхід / Реєстрація</a></li>
+            <li><a href="auth.html#hotkeys">Гарячі клавіші</a></li>
+            <li><a href="https://github.com/andriychernuchka/Dyvylo" target="_blank">Репозиторій GitHub</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>
+          <span>© 2026 ДИВИЛО · УСІ ПРАВА НАЛЕЖАТЬ ЇХНІМ ПРАВОВЛАСНИКАМ · LAB 2</span>
+        </div>
+        <div style="display: flex; gap: 16px; align-items: center;">
+          <span class="node-telemetry-badge">
+            <span class="status-dot status-dot-live"></span>
+            <span>ВУЗОЛ КИЇВ #1: АКТИВНИЙ</span>
+          </span>
+          <span>ПІНГ: 18.2 MS</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,658 @@
+<!doctype html>
+<html lang="uk">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>ДИВИЛО — Особистий кабінет та медіатека (@sespure)</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap"
+            rel="stylesheet"
+        />
+        <link rel="stylesheet" href="css/tokens.css" />
+        <link rel="stylesheet" href="css/components.css" />
+        <link rel="stylesheet" href="css/layout.css" />
+        <style>
+            .profile-hero {
+                background: var(--bg-surface);
+                border: 1px solid var(--border-main);
+                border-radius: var(--radius);
+                padding: 28px;
+                margin-top: 32px;
+                margin-bottom: 32px;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                flex-wrap: wrap;
+                gap: 24px;
+            }
+            .profile-user-info {
+                display: flex;
+                align-items: center;
+                gap: 20px;
+            }
+            .profile-big-avatar {
+                width: 72px;
+                height: 72px;
+                border-radius: var(--radius-sm);
+                background: linear-gradient(135deg, #2563eb, #1e1b4b);
+                color: #ffffff;
+                font-size: 28px;
+                font-weight: 800;
+                font-family: var(--font-mono);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border: 2px solid var(--accent-border);
+                box-shadow: var(--shadow-glow);
+            }
+            .stat-badge-grid {
+                display: grid;
+                grid-template-columns: repeat(4, 1fr);
+                gap: 16px;
+                background: var(--bg-elevated);
+                border: 1px solid var(--border-subtle);
+                border-radius: var(--radius);
+                padding: 14px 20px;
+            }
+            .stat-cell {
+                display: flex;
+                flex-direction: column;
+                gap: 2px;
+                text-align: center;
+            }
+            .stat-val {
+                font-size: 18px;
+                font-weight: 700;
+                font-family: var(--font-mono);
+                color: #ffffff;
+            }
+            .stat-lbl {
+                font-size: 10.5px;
+                color: var(--text-dim);
+                text-transform: uppercase;
+                letter-spacing: 0.5px;
+            }
+            .settings-card {
+                background: var(--bg-surface);
+                border: 1px solid var(--border-subtle);
+                border-radius: var(--radius);
+                padding: 24px;
+                display: flex;
+                flex-direction: column;
+                gap: 20px;
+            }
+            @media (max-width: 900px) {
+                \n .stat-badge-grid {
+                    grid-template-columns: repeat(2, 1fr);
+                    width: 100%;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <!-- SITE HEADER -->
+        <header class="site-header">
+            <div class="header-inner">
+                <div class="header-left">
+                    <a href="index.html" class="brand-logo-wrap">
+                        <div class="brand-mark-square">
+                            <svg
+                                width="15"
+                                height="15"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="2"
+                            >
+                                <rect
+                                    x="3"
+                                    y="3"
+                                    width="18"
+                                    height="18"
+                                    rx="2"
+                                    ry="2"
+                                ></rect>
+                                <circle cx="12" cy="12" r="3"></circle>
+                            </svg>
+                        </div>
+                        <div class="brand-text">
+                            <span class="brand-name"
+                                >ДИВИЛО<span class="brand-dot">.</span></span
+                            >
+                            <span class="brand-slogan"
+                                >медіа-архів &amp; вузол</span
+                            >
+                        </div>
+                    </a>
+
+                    <nav class="site-nav">
+                        <a href="index.html">Каталог</a>
+                        <a href="search.html?type=movies">Фільми</a>
+                        <a href="search.html?type=series">Серіали</a>
+                        <a href="search.html?type=anime">Аніме</a>
+                        <a href="player.html">Плеєр</a>
+                        <a href="components.html">UI Kit</a>
+                    </nav>
+                </div>
+
+                <div class="header-right">
+                    <a
+                        href="search.html"
+                        class="search-bar"
+                        style="text-decoration: none"
+                    >
+                        <svg
+                            width="14"
+                            height="14"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                        >
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                        </svg>
+                        <input type="text" placeholder="Пошук..." readonly />
+                        <span class="search-shortcut">⌘K</span>
+                    </a>
+
+                    <a href="profile.html" class="user-pill">
+                        <div class="user-avatar">S</div>
+                        <span
+                            style="
+                                font-family: var(--font-mono);
+                                font-weight: 600;
+                            "
+                            >@sespure</span
+                        >
+                    </a>
+                </div>
+            </div>
+        </header>
+
+        <!-- MAIN PROFILE CONTENT -->
+        <main class="main-content">
+            <div class="container">
+                <!-- PROFILE USER HEADER -->
+                <div class="profile-hero">
+                    <div class="profile-user-info">
+                        <div class="profile-big-avatar">S</div>
+                        <div>
+                            <div
+                                style="
+                                    display: flex;
+                                    align-items: center;
+                                    gap: 8px;
+                                    margin-bottom: 4px;
+                                "
+                            >
+                                <h1
+                                    style="
+                                        font-size: 24px;
+                                        font-weight: 700;
+                                        font-family: var(--font-mono);
+                                        text-transform: uppercase;
+                                    "
+                                >
+                                    Андрій Черничка
+                                </h1>
+                                <span class="badge badge-primary"
+                                    >NODE ARCHITECT</span
+                                >
+                                <span class="badge badge-live"
+                                    ><span
+                                        class="status-dot status-dot-live"
+                                    ></span>
+                                    P2P SEEDER</span
+                                >
+                            </div>
+                            <div
+                                style="
+                                    font-family: var(--font-mono);
+                                    font-size: 13px;
+                                    color: var(--text-dim);
+                                    display: flex;
+                                    gap: 12px;
+                                "
+                            >
+                                <span>@sespure</span>
+                                <span>·</span>
+                                <span>Вузол: UA-KYIV-DC1</span>
+                                <span>·</span>
+                                <span>Учасник з вересня 2024</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- STATS BADGE GRID -->
+                    <div class="stat-badge-grid">
+                        <div class="stat-cell">
+                            <span class="stat-val">412г</span>
+                            <span class="stat-lbl">Перегляду</span>
+                        </div>
+                        <div class="stat-cell">
+                            <span class="stat-val">348</span>
+                            <span class="stat-lbl">Серій</span>
+                        </div>
+                        <div class="stat-cell">
+                            <span class="stat-val">42</span>
+                            <span class="stat-lbl">В обраному</span>
+                        </div>
+                        <div class="stat-cell">
+                            <span
+                                class="stat-val"
+                                style="color: var(--status-live)"
+                                >1.4 ТБ</span
+                            >
+                            <span class="stat-lbl">P2P Seed</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- NAVIGATION TABS -->
+                <div
+                    class="tabs-segmented"
+                    style="
+                        margin-bottom: 28px;
+                        width: 100%;
+                        display: flex;
+                        overflow-x: auto;
+                    "
+                >
+                    <button
+                        type="button"
+                        class="tab-item active"
+                        style="flex: 1; text-align: center; padding: 10px 16px"
+                    >
+                        Продовжити перегляд (3)
+                    </button>
+                    <button
+                        type="button"
+                        class="tab-item"
+                        style="flex: 1; text-align: center; padding: 10px 16px"
+                    >
+                        Збережене / Watchlist (42)
+                    </button>
+                    <button
+                        type="button"
+                        class="tab-item"
+                        style="flex: 1; text-align: center; padding: 10px 16px"
+                    >
+                        Історія (348)
+                    </button>
+                    <button
+                        type="button"
+                        class="tab-item"
+                        style="flex: 1; text-align: center; padding: 10px 16px"
+                    >
+                        Налаштування вузла &amp; Кеш
+                    </button>
+                </div>
+
+                <!-- SECTION 1: CONTINUE WATCHING LIST -->
+                <div style="margin-bottom: 40px">
+                    <div class="section-header">
+                        <div class="section-title-wrap">
+                            <h2 class="section-title">Незавершені перегляди</h2>
+                            <span class="section-count"
+                                >Збережено позиції таймкоду</span
+                            >
+                        </div>
+                        <button type="button" class="btn btn-outline btn-sm">
+                            Очистити список
+                        </button>
+                    </div>
+
+                    <div class="grid-episodes">
+                        <!-- Item 1 -->
+                        <div class="card-episode active">
+                            <div class="card-episode-thumb">
+                                <div
+                                    style="
+                                        width: 100%;
+                                        height: 100%;
+                                        background: #1e1b4b;
+                                        display: flex;
+                                        align-items: center;
+                                        justify-content: center;
+                                        font-family: var(--font-mono);
+                                        font-size: 10px;
+                                        color: var(--text-dim);
+                                    "
+                                >
+                                    [ S02:E04 ]
+                                </div>
+                                <span class="card-episode-duration"
+                                    >24:18 / 59:30</span
+                                >
+                            </div>
+                            <div class="card-episode-info">
+                                <span
+                                    class="card-episode-num"
+                                    style="color: var(--accent-primary)"
+                                    >ДІМ ДРАКОНА · S02:E04</span
+                                >
+                                <span class="card-episode-title"
+                                    >Червоний дракон і золотий</span
+                                >
+                                <div
+                                    class="progress-bar-wrap"
+                                    style="margin: 6px 0"
+                                >
+                                    <div
+                                        class="progress-bar-fill"
+                                        style="width: 42%"
+                                    ></div>
+                                </div>
+                                <div style="display: flex; gap: 8px">
+                                    <a
+                                        href="player.html"
+                                        class="btn btn-primary btn-xs"
+                                        >Продовжити</a
+                                    >
+                                    <button
+                                        type="button"
+                                        class="btn btn-ghost btn-xs"
+                                    >
+                                        Видалити
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Item 2 -->
+                        <div class="card-episode">
+                            <div class="card-episode-thumb">
+                                <div
+                                    style="
+                                        width: 100%;
+                                        height: 100%;
+                                        background: #022c22;
+                                        display: flex;
+                                        align-items: center;
+                                        justify-content: center;
+                                        font-family: var(--font-mono);
+                                        font-size: 10px;
+                                        color: var(--text-dim);
+                                    "
+                                >
+                                    [ S01:E06 ]
+                                </div>
+                                <span class="card-episode-duration"
+                                    >38:10 / 58:00</span
+                                >
+                            </div>
+                            <div class="card-episode-info">
+                                <span class="card-episode-num"
+                                    >СЬОҐУН · S01:E06</span
+                                >
+                                <span class="card-episode-title"
+                                    >Дами вербового світу</span
+                                >
+                                <div
+                                    class="progress-bar-wrap"
+                                    style="margin: 6px 0"
+                                >
+                                    <div
+                                        class="progress-bar-fill"
+                                        style="width: 66%"
+                                    ></div>
+                                </div>
+                                <div style="display: flex; gap: 8px">
+                                    <a
+                                        href="player.html"
+                                        class="btn btn-primary btn-xs"
+                                        >Продовжити</a
+                                    >
+                                    <button
+                                        type="button"
+                                        class="btn btn-ghost btn-xs"
+                                    >
+                                        Видалити
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Item 3 -->
+                        <div class="card-episode">
+                            <div class="card-episode-thumb">
+                                <div
+                                    style="
+                                        width: 100%;
+                                        height: 100%;
+                                        background: #312e81;
+                                        display: flex;
+                                        align-items: center;
+                                        justify-content: center;
+                                        font-family: var(--font-mono);
+                                        font-size: 10px;
+                                        color: var(--text-dim);
+                                    "
+                                >
+                                    [ S01:E09 ]
+                                </div>
+                                <span class="card-episode-duration"
+                                    >44:00 / 48:20</span
+                                >
+                            </div>
+                            <div class="card-episode-info">
+                                <span class="card-episode-num"
+                                    >РОЗРИВ · S01:E09</span
+                                >
+                                <span class="card-episode-title"
+                                    >Ми такі, які ми є</span
+                                >
+                                <div
+                                    class="progress-bar-wrap"
+                                    style="margin: 6px 0"
+                                >
+                                    <div
+                                        class="progress-bar-fill"
+                                        style="width: 90%"
+                                    ></div>
+                                </div>
+                                <div style="display: flex; gap: 8px">
+                                    <a
+                                        href="player.html"
+                                        class="btn btn-primary btn-xs"
+                                        >Продовжити</a
+                                    >
+                                    <button
+                                        type="button"
+                                        class="btn btn-ghost btn-xs"
+                                    >
+                                        Видалити
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SECTION 2: P2P NODE & CACHE SETTINGS -->
+                <div id="node" class="settings-card">
+                    <div
+                        style="
+                            display: flex;
+                            justify-content: space-between;
+                            align-items: center;
+                            border-bottom: 1px solid var(--border-subtle);
+                            padding-bottom: 14px;
+                        "
+                    >
+                        <div>
+                            <h2
+                                style="
+                                    font-size: 18px;
+                                    font-weight: 700;
+                                    font-family: var(--font-mono);
+                                    text-transform: uppercase;
+                                "
+                            >
+                                Параметри P2P вузла та локального кешу
+                            </h2>
+                            <div
+                                style="font-size: 12px; color: var(--text-dim)"
+                            >
+                                Керування локальним сховищем епізодів для
+                                миттєвого відтворення без затримок
+                            </div>
+                        </div>
+                        <span class="badge badge-live"
+                            ><span class="status-dot status-dot-live"></span>
+                            ВУЗОЛ СИНХРОНІЗОВАНО</span
+                        >
+                    </div>
+
+                    <div
+                        style="
+                            display: grid;
+                            grid-template-columns: repeat(
+                                auto-fit,
+                                minmax(280px, 1fr)
+                            );
+                            gap: 24px;
+                        "
+                    >
+                        <!-- Storage Bar -->
+                        <div>
+                            <div class="form-label" style="margin-bottom: 8px">
+                                Локальний SSD кеш (Дивило Storage)
+                            </div>
+                            <div
+                                class="progress-bar-wrap"
+                                style="height: 8px; margin-bottom: 8px"
+                            >
+                                <div
+                                    class="progress-bar-fill"
+                                    style="width: 45%"
+                                ></div>
+                            </div>
+                            <div
+                                style="
+                                    display: flex;
+                                    justify-content: space-between;
+                                    font-size: 11px;
+                                    font-family: var(--font-mono);
+                                    color: var(--text-dim);
+                                "
+                            >
+                                <span>54.2 ГБ використано</span>
+                                <span>Ліміт: 120 ГБ</span>
+                            </div>
+                        </div>
+
+                        <!-- Preferences -->
+                        <div class="form-group">
+                            <label class="form-label"
+                                >Пріоритетна студія озвучення</label
+                            >
+                            <select class="select-custom">
+                                <option selected>
+                                    Студія «Цікава Ідея» (MVO 5.1)
+                                </option>
+                                <option>Студія «НеЗупиняйПродакшн»</option>
+                                <option>Студія «В одне рило»</option>
+                                <option>
+                                    Оригінальна аудіодоріжка + субтитри
+                                </option>
+                            </select>
+                        </div>
+
+                        <!-- Quality default -->
+                        <div class="form-group">
+                            <label class="form-label"
+                                >Якість потоку за замовчуванням</label
+                            >
+                            <select class="select-custom">
+                                <option selected>
+                                    4K Ultra HD (HEVC 28 Mbps · Прямий стрім)
+                                </option>
+                                <option>1080p Full HD (12 Mbps)</option>
+                                <option>Автоматична адаптація бітрейту</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Toggles -->
+                    <div
+                        style="
+                            display: flex;
+                            flex-direction: column;
+                            gap: 12px;
+                            border-top: 1px solid var(--border-divider);
+                            padding-top: 16px;
+                        "
+                    >
+                        <label class="checkbox-wrap">
+                            <input type="checkbox" checked />
+                            <span
+                                >Дозволити фонове кешування наступного епізоду
+                                під час перегляду</span
+                            >
+                        </label>
+                        <label class="checkbox-wrap">
+                            <input type="checkbox" checked />
+                            <span
+                                >Брати участь у безпечній децентралізованій
+                                роздачі P2P фрагментів (Seed Ratio 3.8)</span
+                            >
+                        </label>
+                    </div>
+
+                    <div
+                        style="
+                            display: flex;
+                            justify-content: flex-end;
+                            gap: 10px;
+                        "
+                    >
+                        <button type="button" class="btn btn-outline btn-sm">
+                            Скинути до стандартних
+                        </button>
+                        <button type="button" class="btn btn-primary btn-sm">
+                            Зберегти налаштування
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- SITE FOOTER -->
+        <footer class="site-footer">
+            <div class="container">
+                <div class="footer-bottom">
+                    <div>
+                        <span
+                            >© 2026 ДИВИЛО МЕДІА-ХАБ · КАБІНЕТ КОРИСТУВАЧА</span
+                        >
+                    </div>
+                    <div style="display: flex; gap: 16px; align-items: center">
+                        <span class="node-telemetry-badge">
+                            <span class="status-dot status-dot-live"></span>
+                            <span>КЛІЄНТСЬКИЙ ВУЗОЛ: 192.168.1.104</span>
+                        </span>
+                        <span>КЕШ: 54.2 GB</span>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+        <script>
+            document
+                .querySelectorAll(".tabs-segmented .tab-item")
+                .forEach((btn) => {
+                    btn.addEventListener("click", (e) => {
+                        e.preventDefault();
+                        btn.closest(".tabs-segmented")
+                            .querySelectorAll(".tab-item")
+                            .forEach((b) => b.classList.remove("active"));
+                        btn.classList.add("active");
+                    });
+                });
+        </script>
+    </body>
+</html>
