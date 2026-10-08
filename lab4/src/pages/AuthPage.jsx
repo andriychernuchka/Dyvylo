@@ -1,19 +1,26 @@
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { Button, Input } from '../components/ui';
-import styles from './AuthPage.module.css';
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { Button, Input } from "../components/ui";
+import styles from "./AuthPage.module.css";
 
 export function AuthPage() {
-  const [tab, setTab] = useState('login');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [name, setName] = useState('');
+  const [tab, setTab] = useState("login");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [name, setName] = useState("");
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Non-blocking UI demonstration without backend
-    navigate('/profile');
+    localStorage.setItem("dyvylo_auth_status", "authenticated");
+    window.dispatchEvent(new Event("storage"));
+    navigate("/profile");
+  };
+
+  const handleQuickAuth = () => {
+    localStorage.setItem("dyvylo_auth_status", "authenticated");
+    window.dispatchEvent(new Event("storage"));
+    navigate("/profile");
   };
 
   return (
@@ -25,45 +32,49 @@ export function AuthPage() {
               style={{
                 width: 32,
                 height: 32,
-                border: '1px solid var(--accent-primary)',
-                background: '#000',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                color: 'var(--accent-primary)',
+                border: "1px solid var(--accent-primary)",
+                background: "#000",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                color: "var(--accent-primary)",
               }}
             >
               [·]
             </div>
             <h2 className={styles.title}>
-              {tab === 'login' ? 'Вхід у термінал' : 'Реєстрація вузла'}
+              {tab === "login" ? "Вхід у термінал" : "Реєстрація вузла"}
             </h2>
             <p className={styles.sub}>
-              {tab === 'login'
-                ? 'Авторизація оператора платформи ДИВИЛО'
-                : 'Створення облікового запису та персонального списку'}
+              {tab === "login"
+                ? "Авторизація оператора платформи ДИВИЛО"
+                : "Створення облікового запису та персонального списку"}
             </p>
           </div>
 
           <div className={styles.tabs}>
             <button
               type="button"
-              className={`${styles.tab} ${tab === 'login' ? styles.activeTab : ''}`}
-              onClick={() => setTab('login')}
+              className={`${styles.tab} ${tab === "login" ? styles.activeTab : ""}`}
+              onClick={() => setTab("login")}
             >
               Вхід
             </button>
             <button
               type="button"
-              className={`${styles.tab} ${tab === 'register' ? styles.activeTab : ''}`}
-              onClick={() => setTab('register')}
+              className={`${styles.tab} ${tab === "register" ? styles.activeTab : ""}`}
+              onClick={() => setTab("register")}
             >
               Реєстрація
             </button>
           </div>
 
-          <form className={styles.form} onSubmit={handleSubmit} data-testid="auth-form">
-            {tab === 'register' && (
+          <form
+            className={styles.form}
+            onSubmit={handleSubmit}
+            data-testid="auth-form"
+          >
+            {tab === "register" && (
               <Input
                 label="Позивний / Ім'я оператора"
                 placeholder="Наприклад: operator-01"
@@ -92,17 +103,30 @@ export function AuthPage() {
             />
 
             <div className={styles.checkboxRow}>
-              <label style={{ display: 'flex', alignItems: 'center', gap: 6, cursor: 'pointer' }}>
+              <label
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: 6,
+                  cursor: "pointer",
+                }}
+              >
                 <input type="checkbox" defaultChecked />
                 <span>Запам&apos;ятати цей пристрій</span>
               </label>
-              <span style={{ color: 'var(--accent-primary)', cursor: 'pointer', fontSize: 11 }}>
+              <span
+                style={{
+                  color: "var(--accent-primary)",
+                  cursor: "pointer",
+                  fontSize: 11,
+                }}
+              >
                 Забули ключ?
               </span>
             </div>
 
             <Button type="submit" variant="primary" size="lg">
-              {tab === 'login' ? 'Увійти в термінал' : 'Зареєструвати вузол'}
+              {tab === "login" ? "Увійти в термінал" : "Зареєструвати вузол"}
             </Button>
           </form>
 
@@ -113,7 +137,7 @@ export function AuthPage() {
               variant="outline"
               size="md"
               style={{ flex: 1 }}
-              onClick={() => navigate('/profile')}
+              onClick={handleQuickAuth}
             >
               GitHub ID
             </Button>
@@ -121,7 +145,7 @@ export function AuthPage() {
               variant="outline"
               size="md"
               style={{ flex: 1 }}
-              onClick={() => navigate('/profile')}
+              onClick={handleQuickAuth}
             >
               Passkey
             </Button>
