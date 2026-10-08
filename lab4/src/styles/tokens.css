@@ -1,96 +1,99 @@
 /**
  * DYVYLO DESIGN SYSTEM - TOKENS (Lab 2 Identity)
- * Cyberpunk / Dark Minimalist / High-Tech Media Hub
+ * Concept: Architectural Cyberpunk / Cobalt Precision Media Hub
  */
 
 :root {
-  /* Surfaces & Backgrounds */
-  --bg-page: #08080a;
-  --bg-surface: #0f0f13;
-  --bg-elevated: #15151b;
-  --bg-card: #121217;
-  --bg-card-hover: #181822;
-  --bg-input: #0a0a0e;
-  --bg-hover: #1c1c25;
-  --bg-glass: rgba(15, 15, 19, 0.88);
-  --bg-overlay: rgba(5, 5, 8, 0.82);
+    /* Surfaces & Backgrounds */
+    --bg-page: #08080a;
+    --bg-surface: #0f0f13;
+    --bg-elevated: #15151b;
+    --bg-card: #121217;
+    --bg-card-hover: #181822;
+    --bg-input: #0a0a0e;
+    --bg-hover: #1c1c25;
+    --bg-glass: rgba(15, 15, 19, 0.88);
+    --bg-overlay: rgba(5, 5, 8, 0.82);
 
-  /* Borders & Dividers */
-  --border-subtle: rgba(255, 255, 255, 0.07);
-  --border-main: rgba(255, 255, 255, 0.12);
-  --border-hover: rgba(255, 255, 255, 0.24);
-  --border-focus: #00f0ff;
-  --border-divider: rgba(255, 255, 255, 0.05);
+    /* Borders & Dividers */
+    --border-subtle: rgba(255, 255, 255, 0.07);
+    --border-main: rgba(255, 255, 255, 0.12);
+    --border-hover: rgba(255, 255, 255, 0.24);
+    --border-focus: #3b82f6;
+    --border-divider: rgba(255, 255, 255, 0.05);
 
-  /* Typography */
-  --text-main: #f8fafc;
-  --text-muted: #94a3b8;
-  --text-dim: #64748b;
-  --text-inverse: #030305;
-  --text-accent: #00f0ff;
+    /* Typography */
+    --text-main: #f8fafc;
+    --text-muted: #94a3b8;
+    --text-dim: #64748b;
+    --text-inverse: #030305;
+    --text-accent: #60a5fa;
 
-  /* Accent & Cyberpunk Neon */
-  --accent-primary: #00f0ff;
-  --accent-hover: #00c8d7;
-  --accent-dim: rgba(0, 240, 255, 0.12);
-  --accent-border: rgba(0, 240, 255, 0.35);
-  --accent-glow: rgba(0, 240, 255, 0.25);
+    /* Accent & Electric Blue (From Lab 2) */
+    --accent-primary: #3b82f6;
+    --accent-hover: #2563eb;
+    --accent-dim: rgba(59, 130, 246, 0.12);
+    --accent-border: rgba(59, 130, 246, 0.35);
+    --accent-glow: rgba(59, 130, 246, 0.25);
 
-  --accent-blue: #3b82f6;
-  --accent-purple: #8b5cf6;
+    --accent-cyan: #00f0ff;
+    --accent-purple: #8b5cf6;
 
-  /* Status Colors */
-  --status-live: #10b981;
-  --status-live-dim: rgba(16, 185, 129, 0.12);
-  --status-live-border: rgba(16, 185, 129, 0.35);
+    /* Status Colors */
+    --status-live: #10b981;
+    --status-live-dim: rgba(16, 185, 129, 0.12);
+    --status-live-border: rgba(16, 185, 129, 0.35);
 
-  --status-warning: #f59e0b;
-  --status-warning-dim: rgba(245, 158, 11, 0.12);
+    --status-warning: #f59e0b;
+    --status-warning-dim: rgba(245, 158, 11, 0.12);
 
-  --status-danger: #ef4444;
-  --status-danger-dim: rgba(239, 68, 68, 0.12);
+    --status-danger: #ef4444;
+    --status-danger-dim: rgba(239, 68, 68, 0.12);
 
-  /* Geometry & Radii (Strict Brutalist 2px/3px) */
-  --radius-xs: 1px;
-  --radius-sm: 2px;
-  --radius-md: 3px;
-  --radius-lg: 4px;
-  --radius-pill: 9999px;
+    /* Geometry & Radii (Strict Brutalist 2px/3px) */
+    --radius-xs: 1px;
+    --radius-sm: 2px;
+    --radius-md: 3px;
+    --radius-lg: 4px;
+    --radius-pill: 9999px;
 
-  /* Fonts */
-  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  --font-mono: 'JetBrains Mono', SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    /* Fonts */
+    --font-sans:
+        "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+        sans-serif;
+    --font-mono:
+        "JetBrains Mono", SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 
-  /* Font Sizes */
-  --font-size-2xs: 10px;
-  --font-size-xs: 11px;
-  --font-size-sm: 12.5px;
-  --font-size-base: 14px;
-  --font-size-md: 15px;
-  --font-size-lg: 18px;
-  --font-size-xl: 22px;
-  --font-size-2xl: 28px;
-  --font-size-3xl: 36px;
-  --font-size-4xl: 48px;
+    /* Font Sizes */
+    --font-size-2xs: 10px;
+    --font-size-xs: 11px;
+    --font-size-sm: 12.5px;
+    --font-size-base: 14px;
+    --font-size-md: 15px;
+    --font-size-lg: 18px;
+    --font-size-xl: 22px;
+    --font-size-2xl: 28px;
+    --font-size-3xl: 36px;
+    --font-size-4xl: 48px;
 
-  /* Spacing */
-  --space-1: 4px;
-  --space-2: 8px;
-  --space-3: 12px;
-  --space-4: 16px;
-  --space-5: 20px;
-  --space-6: 24px;
-  --space-8: 32px;
-  --space-10: 40px;
-  --space-12: 48px;
-  --space-16: 64px;
+    /* Spacing */
+    --space-1: 4px;
+    --space-2: 8px;
+    --space-3: 12px;
+    --space-4: 16px;
+    --space-5: 20px;
+    --space-6: 24px;
+    --space-8: 32px;
+    --space-10: 40px;
+    --space-12: 48px;
+    --space-16: 64px;
 
-  /* Transitions */
-  --transition-fast: 0.12s ease;
-  --transition: 0.18s ease;
+    /* Transitions */
+    --transition-fast: 0.12s ease;
+    --transition: 0.18s ease;
 
-  /* Layout */
-  --container-max: 1360px;
-  --container-narrow: 1080px;
-  --header-height: 56px;
+    /* Layout */
+    --container-max: 1360px;
+    --container-narrow: 1080px;
+    --header-height: 56px;
 }

@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom';
 import { Badge } from '../../../components/ui';
 import styles from './MediaCard.module.css';
 
@@ -6,7 +5,7 @@ export function MediaCard({ item }) {
   if (!item) return null;
 
   return (
-    <Link to={`/title/${item.id}`} className={styles.card} data-testid="media-card">
+    <a href="#details" className={styles.card} data-testid="media-card">
       <div className={styles.posterWrap}>
         <img
           src={item.poster}
@@ -29,7 +28,7 @@ export function MediaCard({ item }) {
           <span>{item.studio}</span>
         </div>
       </div>
-    </Link>
+    </a>
   );
 }
 
