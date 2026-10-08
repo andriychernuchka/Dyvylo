@@ -21,7 +21,7 @@ export function PlayerViewport({
       <img
         src={
           backdrop ||
-          "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=1600&q=80"
+          "https://image.tmdb.org/t/p/w1280/ilRyazdMJwN05exqhwK4tMKBYZs.jpg"
         }
         alt={title}
         className={styles.videoBackdrop}
