@@ -1,0 +1,11 @@
+{
+  "name": "dyvylo-workspace-lab4",
+  "version": "1.0.0",
+  "private": true,
+  "description": "DYVYLO - Media Hub (Lab 4 Views & CSS Modules)",
+  "scripts": {
+    "dev": "npm run dev --prefix lab4",
+    "build": "npm run build --prefix lab4",
+    "preview": "npm run preview --prefix lab4"
+  }
+}

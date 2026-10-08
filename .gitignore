@@ -1,0 +1,36 @@
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+
+# Reports, documents and drafts
+*.pages
+*.docx
+*.doc
+*.pdf
+*report*
+*Report*
+*звіт*
+*Звіт*
+reports/
+Звіти/
+
+# Dependencies and build outputs
+node_modules/
+dist/
+dist-ssr/
+*.local
+
+# Other labs (isolated in their own branches)
+client/
+design/
+lab1*
+lab2*
+lab3*
+
+# Test logs & outputs
+cypress/videos/
+cypress/screenshots/
+coverage/

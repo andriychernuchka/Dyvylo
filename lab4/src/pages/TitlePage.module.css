@@ -1,0 +1,110 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+  padding-top: var(--space-6);
+}
+
+.titleHeader {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.badges {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.mainTitle {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-3xl);
+  font-weight: 800;
+  color: #fff;
+}
+
+.titleUk {
+  font-size: var(--font-size-lg);
+  color: var(--accent-primary);
+  font-weight: 600;
+}
+
+.mainGrid {
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  gap: var(--space-8);
+  align-items: start;
+}
+
+.leftCol {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+.rightCol {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+}
+
+.specsCard {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  padding: var(--space-4);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  font-family: var(--font-mono);
+}
+
+.specsTitle {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  border-bottom: 1px solid var(--border-divider);
+  padding-bottom: 6px;
+}
+
+.specRow {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+}
+
+.specLabel {
+  color: var(--text-dim);
+}
+
+.specVal {
+  color: var(--text-main);
+  font-weight: 600;
+}
+
+.episodesSection {
+  margin-top: var(--space-4);
+}
+
+.episodesHeader {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-md);
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: var(--space-4);
+  color: var(--text-main);
+}
+
+.episodesList {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+@media (max-width: 900px) {
+  .mainGrid {
+    grid-template-columns: 1fr;
+  }
+}
