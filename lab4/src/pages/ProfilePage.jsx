@@ -1,7 +1,7 @@
-import { MediaCard } from '../features/catalog/components/MediaCard';
-import { Badge, Button } from '../components/ui';
-import { MOCK_RELEASES } from '../data/mockData';
-import styles from './ProfilePage.module.css';
+import { MediaCard } from "../features/catalog/components/MediaCard";
+import { Badge, Button } from "../components/ui";
+import { MOCK_RELEASES } from "../data/mockData";
+import styles from "./ProfilePage.module.css";
 
 export function ProfilePage() {
   const bookmarks = MOCK_RELEASES.slice(0, 4);
@@ -14,14 +14,27 @@ export function ProfilePage() {
           <div className={styles.userInfo}>
             <div className={styles.avatar}>O</div>
             <div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 4 }}>
+              <div
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: 8,
+                  marginBottom: 4,
+                }}
+              >
                 <h1 className={styles.name}>@operator</h1>
                 <Badge variant="live" liveDot>
                   АКТИВНИЙ ВУЗОЛ
                 </Badge>
               </div>
-              <p style={{ color: 'var(--text-muted)', fontSize: 13 }}>
-                Шлюз: UA-KYIV-MIRROR-01 · SSD Cache: 128 GB
+              <p
+                style={{
+                  color: "var(--text-muted)",
+                  fontSize: 13,
+                  fontFamily: "var(--font-mono)",
+                }}
+              >
+                Шлюз: UA-KYIV-MIRROR-01
               </p>
             </div>
           </div>
@@ -46,21 +59,21 @@ export function ProfilePage() {
         <section>
           <div
             style={{
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'space-between',
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "space-between",
               marginBottom: 16,
-              borderBottom: '1px solid var(--border-subtle)',
+              borderBottom: "1px solid var(--border-subtle)",
               paddingBottom: 8,
             }}
           >
             <div>
               <h2
                 style={{
-                  fontFamily: 'var(--font-mono)',
+                  fontFamily: "var(--font-mono)",
                   fontSize: 18,
                   fontWeight: 700,
-                  textTransform: 'uppercase',
+                  textTransform: "uppercase",
                 }}
               >
                 Мої закладки (Обране)

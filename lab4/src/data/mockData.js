@@ -16,10 +16,9 @@ export const MOCK_RELEASES = [
     episodesCount: "Повнометражний фільм",
     synopsis:
       "2049 рік. Офіцер поліції Лос-Анджелеса Кей — реплікант моделі Nexus-9, який полює на застарілих андроїдів. Випадково він знаходить давно приховану таємницю народження дитини від репліканта, що здатна зруйнувати крихку рівновагу між людьми та біороботами. Розслідування веде Кея до зниклого 30 років тому мисливця Ріка Декарда.",
-    poster:
-      "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?w=800&q=80",
+    poster: "https://image.tmdb.org/t/p/w780/gajva2L0rPYkEWjzgFlBXCAVBE5.jpg",
     backdrop:
-      "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=1600&q=80",
+      "https://image.tmdb.org/t/p/w1280/ilRyazdMJwN05exqhwK4tMKBYZs.jpg",
     tags: ["Фільми", "Кіберпанк", "4K UHD", "HDR10+"],
   },
   {
@@ -39,10 +38,9 @@ export const MOCK_RELEASES = [
     episodesCount: "1 Сезон · 10 Серій",
     synopsis:
       "Безпритульний вуличний підліток Девід Мартінес втрачає матір у перестрілці банд Найт-Сіті. Залишившись без грошей на навчання в академії Арасака, він встановлює собі на чорному ринку надпотужний військовий кіберімплант Сандевістан і стає найманцем-еджраннером у команді Мейна та netrunner-дівчини Люсі.",
-    poster:
-      "https://images.unsplash.com/photo-1578632767115-351597cf2477?w=800&q=80",
+    poster: "https://image.tmdb.org/t/p/w780/wTUVYRF8LcJj10fORuLI0ucCFQW.jpg",
     backdrop:
-      "https://images.unsplash.com/photo-1542751371-adc38448a05e?w=1600&q=80",
+      "https://image.tmdb.org/t/p/w1280/3UbHGmu9vIMSC5uNfnGt7DjetqT.jpg",
     tags: ["Аніме", "Кіберпанк", "Sci-Fi", "4K HDR"],
   },
   {
@@ -62,10 +60,9 @@ export const MOCK_RELEASES = [
     episodesCount: "Повнометражне аніме",
     synopsis:
       "2029 рік. Світ повністю обплутаний глобальними електронними мережами, а людські тіла стали кібернетичними протезами. Майор Мотоко Кусанагі — кіборг і лідер Десятого сектору безпеки — полює на невідомого хакера Лялькаря (Puppet Master), здатного зламувати свідомість і «привид» (душу) людей.",
-    poster:
-      "https://images.unsplash.com/photo-1563089145-599997674d42?w=800&q=80",
+    poster: "https://image.tmdb.org/t/p/w780/9gC88zYUBARRSThcG93MvW14sqx.jpg",
     backdrop:
-      "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=1600&q=80",
+      "https://image.tmdb.org/t/p/w1280/3UbHGmu9vIMSC5uNfnGt7DjetqT.jpg",
     tags: ["Аніме", "Кіберпанк", "Класика", "4K"],
   },
   {
@@ -85,34 +82,31 @@ export const MOCK_RELEASES = [
     episodesCount: "2 Сезони · 18 Серій",
     synopsis:
       "У XXV столітті свідомість людини зберігається в цифрових чіпах — «коркових стеках», які можна пересаджувати в нові тіла («оболонки»). Колишній елітний повстанець Такеші Ковач пробуджується через 250 років після знищення свого первісного тіла, щоб розслідувати замах на найбагатшого олігарха Бей-Сіті Лоренса Бенкрофта.",
-    poster:
-      "https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?w=800&q=80",
-    backdrop:
-      "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=1600&q=80",
+    poster: "https://image.tmdb.org/t/p/w780/AisK4uFsnwwmMkSynFpNl0VeGR.jpg",
+    backdrop: "https://image.tmdb.org/t/p/w1280/AisK4uFsnwwmMkSynFpNl0VeGR.jpg",
     tags: ["Серіали", "Кіберпанк", "Детектив", "4K UHD"],
   },
   {
-    id: "the-matrix",
-    title: "The Matrix (1999)",
-    titleUk: "Матриця",
+    id: "dredd-2012",
+    title: "Dredd (2012)",
+    titleUk: "Дредд 3D",
     type: "movies",
-    creator: "The Wachowskis",
-    year: 1999,
-    genre: "Кіберпанк, Sci-Fi, Культ",
-    quality: "4K IMAX Remaster",
-    rating: 8.7,
-    duration: "136 хв",
-    bitrate: "46.0 Mbps",
-    badgeText: "IMAX 4K",
-    studio: "Так Треба Продакшн",
+    creator: "Pete Travis / Alex Garland",
+    year: 2012,
+    genre: "Кіберпанк, Дистопія, Екшн",
+    quality: "4K UHD HDR",
+    rating: 7.9,
+    duration: "95 хв",
+    bitrate: "44.0 Mbps",
+    badgeText: "MEGA-CITY ONE",
+    studio: "Офіційний дубляж (UFD)",
     episodesCount: "Повнометражний фільм",
     synopsis:
-      "Хакер Томас Андерсон (Нео) веде подвійне життя: вдень він програміст у мегакорпорації, а вночі шукає відповідь на питання: «Що таке Матриця?». Загадковий Морфей і триніті відкривають йому шокуючу правду: звична реальність — це нейро-інтерактивна комп’ютерна симуляція, створена штучним інтелектом.",
-    poster:
-      "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=800&q=80",
+      "Майбутнє. Північна Америка перетворена на випалену радіацією пустелю. На східному узбережжі височить гігантський мегаполіс Мега-Сіті Один із 800 мільйонами мешканців, де порядок підтримують безжальні Судді. Суддя Дредд та курсантка-телепат Кассандра Андерсон вирушають у 200-поверховий хмарочос «Піч-Тріз», підконтрольний наркобаронесі Ма-Ма.",
+    poster: "https://image.tmdb.org/t/p/w780/dAnNHQchmxSttHsOYz2hYAWxtCl.jpg",
     backdrop:
-      "https://images.unsplash.com/photo-1510519138171-c7a40733a76e?w=1600&q=80",
-    tags: ["Фільми", "Кіберпанк", "Культ", "4K UHD"],
+      "https://image.tmdb.org/t/p/w1280/kqKcID44nGtIxhhzmziAX65abRx.jpg",
+    tags: ["Фільми", "Кіберпанк", "Дистопія", "4K UHD"],
   },
   {
     id: "akira",
@@ -131,10 +125,9 @@ export const MOCK_RELEASES = [
     episodesCount: "Повнометражне аніме",
     synopsis:
       "2019 рік, Нео-Токіо, відбудоване після Третьої світової війни. Байкерська банда підлітків на чолі з Канедою стикається з військовим проєктом надлюдей. Друг Канеди — Тецуо — після аварії пробуджує в собі колосальні телекінетичні руйнівні здібності, схожі на сили міфічного Акіри.",
-    poster:
-      "https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?w=800&q=80",
+    poster: "https://image.tmdb.org/t/p/w780/neZ0ykEsPqxamsX6o5QNUFILQrz.jpg",
     backdrop:
-      "https://images.unsplash.com/photo-1508739773434-c26b3d09e071?w=1600&q=80",
+      "https://image.tmdb.org/t/p/w1280/fK40VGYIm7hmKrLJ26fgPQU0qRG.jpg",
     tags: ["Аніме", "Кіберпанк", "Нео-Токіо", "4K UHD"],
   },
   {
@@ -154,10 +147,9 @@ export const MOCK_RELEASES = [
     episodesCount: "3 Сезони · 41 Серія",
     synopsis:
       "Японія XXII століття керується системою «Сивіла», яка сканує психологічний стан громадян і визначає коефіцієнт злочинності («Психопаспорт»). Інспектор Акане Цунеморі та її виконавець Шинья Когамі розслідують злочини за допомогою зброї «Домінатор», що виконує вироки автоматично.",
-    poster:
-      "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=800&q=80",
+    poster: "https://image.tmdb.org/t/p/w780/2HtnTJLs3CDUTu6ug8rib5vNnU2.jpg",
     backdrop:
-      "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?w=1600&q=80",
+      "https://image.tmdb.org/t/p/w1280/fK40VGYIm7hmKrLJ26fgPQU0qRG.jpg",
     tags: ["Серіали", "Аніме", "Кіберпанк", "Sci-Fi"],
   },
   {
@@ -177,10 +169,9 @@ export const MOCK_RELEASES = [
     episodesCount: "1 Сезон · 23 Серії",
     synopsis:
       "Купольне місто Ромдо — ізольований притулок для людей та андроїдів-авторейвів. Вірус Когіто наділяє роботів душею і самоусвідомленням, провокуючи спалахи насильства. Слідча Ріл Мейєр та загадковий іммігрант Вінсент Лоу вирушають за межі купола, щоб знайти витоки істот «Проксі».",
-    poster:
-      "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=800&q=80",
+    poster: "https://image.tmdb.org/t/p/w780/tHcce6PKnhNBneSMbadI4jynHpY.jpg",
     backdrop:
-      "https://images.unsplash.com/photo-1578632767115-351597cf2477?w=1600&q=80",
+      "https://image.tmdb.org/t/p/w1280/ilRyazdMJwN05exqhwK4tMKBYZs.jpg",
     tags: ["Аніме", "Кіберпанк", "Філософія", "Sci-Fi"],
   },
 ];
