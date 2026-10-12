@@ -28,7 +28,7 @@ export function Header() {
       <div className="container">
         <div className={styles.inner}>
           <div className={styles.left}>
-            <a href="/" className={styles.brand}>
+            <a href="#home" className={styles.brand}>
               <div className={styles.brandSquare}>
                 <svg
                   width="14"
@@ -51,7 +51,7 @@ export function Header() {
             </a>
 
             <nav className={styles.nav}>
-              <a href="/" className={`${styles.navLink} ${styles.activeLink}`}>
+              <a href="#home" className={`${styles.navLink} ${styles.activeLink}`}>
                 Головна
               </a>
               <a href="#catalog" className={styles.navLink}>

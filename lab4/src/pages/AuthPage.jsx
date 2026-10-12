@@ -11,11 +11,13 @@ export function AuthPage() {
     e.preventDefault();
     localStorage.setItem("dyvylo_auth_status", "authenticated");
     window.dispatchEvent(new Event("storage"));
+    window.location.hash = "profile";
   };
 
   const handleQuickAuth = () => {
     localStorage.setItem("dyvylo_auth_status", "authenticated");
     window.dispatchEvent(new Event("storage"));
+    window.location.hash = "profile";
   };
 
   return (
