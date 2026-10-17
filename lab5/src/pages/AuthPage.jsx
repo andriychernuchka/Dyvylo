@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Button, Input } from "../components/ui";
 import styles from "./AuthPage.module.css";
 
@@ -7,17 +8,19 @@ export function AuthPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
+  const navigate = useNavigate();
+
   const handleSubmit = (e) => {
     e.preventDefault();
     localStorage.setItem("dyvylo_auth_status", "authenticated");
     window.dispatchEvent(new Event("storage"));
-    window.location.hash = "profile";
+    navigate("/profile");
   };
 
   const handleQuickAuth = () => {
     localStorage.setItem("dyvylo_auth_status", "authenticated");
     window.dispatchEvent(new Event("storage"));
-    window.location.hash = "profile";
+    navigate("/profile");
   };
 
   return (

@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { HeroSpotlight } from "../features/catalog/components/HeroSpotlight";
 import { MediaCard } from "../features/catalog/components/MediaCard";
 import { EpisodeCard } from "../features/catalog/components/EpisodeCard";
@@ -31,11 +32,11 @@ export function HomePage() {
                 Збережений прогрес на edge-вузлі
               </span>
             </div>
-            <a href="#profile">
+            <Link to="/profile">
               <Button variant="ghost" size="sm">
                 Всі збережені →
               </Button>
-            </a>
+            </Link>
           </div>
           <div className={styles.episodesGrid}>
             {MOCK_EPISODES.slice(0, 3).map((ep) => (
@@ -60,11 +61,11 @@ export function HomePage() {
                 Найвищий бітрейт та локалізація
               </span>
             </div>
-            <a href="#catalog">
+            <Link to="/catalog?type=series">
               <Button variant="ghost" size="sm">
                 Дивитися всі →
               </Button>
-            </a>
+            </Link>
           </div>
           <div className={styles.postersGrid}>
             {series.map((item) => (
@@ -84,11 +85,11 @@ export function HomePage() {
                 4K ремастери, класика та онґоїнґи
               </span>
             </div>
-            <a href="#catalog">
+            <Link to="/catalog?type=anime">
               <Button variant="ghost" size="sm">
                 Весь каталог аніме →
               </Button>
-            </a>
+            </Link>
           </div>
           <div className={styles.postersGrid}>
             {anime.map((item) => (
@@ -106,11 +107,11 @@ export function HomePage() {
                 Незжатий звук Dolby Atmos
               </span>
             </div>
-            <a href="#catalog">
+            <Link to="/catalog?type=movies">
               <Button variant="ghost" size="sm">
                 Всі фільми →
               </Button>
-            </a>
+            </Link>
           </div>
           <div className={styles.postersGrid}>
             {movies.map((item) => (

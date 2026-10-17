@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import styles from './Footer.module.css';
 
 export function Footer() {
@@ -25,28 +26,28 @@ export function Footer() {
           <div className={styles.col}>
             <h4 className={styles.heading}>Навігація</h4>
             <ul className={styles.links}>
-              <li><a href="#catalog">Головна каталогу</a></li>
-              <li><a href="#catalog">Фільми у 4K HDR</a></li>
-              <li><a href="#catalog">Серіали та онґоїнґи</a></li>
-              <li><a href="#catalog">Культове аніме</a></li>
+              <li><Link to="/catalog">Головна каталогу</Link></li>
+              <li><Link to="/catalog?type=movies">Фільми у 4K HDR</Link></li>
+              <li><Link to="/catalog?type=series">Серіали та онґоїнґи</Link></li>
+              <li><Link to="/catalog?type=anime">Культове аніме</Link></li>
             </ul>
           </div>
 
           <div className={styles.col}>
             <h4 className={styles.heading}>Студії озвучки</h4>
             <ul className={styles.links}>
-              <li><a href="#catalog">Цікава Ідея</a></li>
-              <li><a href="#catalog">НеЗупиняйПродакшн</a></li>
-              <li><a href="#catalog">В одне рило</a></li>
-              <li><a href="#catalog">DniproFilm</a></li>
+              <li><Link to="/catalog">Цікава Ідея</Link></li>
+              <li><Link to="/catalog">НеЗупиняйПродакшн</Link></li>
+              <li><Link to="/catalog">В одне рило</Link></li>
+              <li><Link to="/catalog">DniproFilm</Link></li>
             </ul>
           </div>
 
           <div className={styles.col}>
             <h4 className={styles.heading}>Шлюз та профіль</h4>
             <ul className={styles.links}>
-              <li><a href="#profile">Особистий кабінет</a></li>
-              <li><a href="#auth">Вхід та реєстрація</a></li>
+              <li><Link to="/profile">Особистий кабінет</Link></li>
+              <li><Link to="/auth">Вхід та реєстрація</Link></li>
               <li><a href="https://github.com/andriychernuchka/Dyvylo" target="_blank" rel="noreferrer">GitHub репозиторій</a></li>
             </ul>
           </div>
