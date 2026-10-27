@@ -17,20 +17,13 @@
 reports/
 Звіти/
 
-# Dependencies and build outputs
+# Workspaces and dependencies
 node_modules/
 dist/
 dist-ssr/
 *.local
-
-# Other labs (isolated in their own branches)
 client/
-design/
 lab1*
 lab2*
 lab3*
-
-# Test logs & outputs
-cypress/videos/
-cypress/screenshots/
-coverage/
+.husky/
