@@ -1,0 +1,29 @@
+[
+  {
+    "id": "house-of-the-dragon",
+    "title": "House of the Dragon",
+    "type": "series",
+    "year": 2024,
+    "quality": "4K UHD HDR10+",
+    "rating": 8.9,
+    "poster": "https://static.tvmaze.com/uploads/images/original_untouched/627/1568449.jpg"
+  },
+  {
+    "id": "cyberpunk-edgerunners",
+    "title": "Cyberpunk: Edgerunners",
+    "type": "anime",
+    "year": 2022,
+    "quality": "4K HDR MASTER",
+    "rating": 8.3,
+    "poster": "https://static.tvmaze.com/uploads/images/original_untouched/498/1246519.jpg"
+  },
+  {
+    "id": "dune-part-two",
+    "title": "Dune: Part Two",
+    "type": "movies",
+    "year": 2024,
+    "quality": "4K IMAX Atmos",
+    "rating": 8.6,
+    "poster": "https://upload.wikimedia.org/wikipedia/en/5/52/Dune_Part_Two_poster.jpeg"
+  }
+]
