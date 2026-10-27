@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { Button, Input } from "../components/ui";
 import styles from "./AuthPage.module.css";
 
@@ -9,18 +9,21 @@ export function AuthPage() {
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
   const navigate = useNavigate();
+  const location = useLocation();
+  // Return to the page the guard redirected from (e.g. /profile)
+  const redirectTo = location.state?.from?.pathname || "/profile";
 
   const handleSubmit = (e) => {
     e.preventDefault();
     localStorage.setItem("dyvylo_auth_status", "authenticated");
     window.dispatchEvent(new Event("storage"));
-    navigate("/profile");
+    navigate(redirectTo);
   };
 
   const handleQuickAuth = () => {
     localStorage.setItem("dyvylo_auth_status", "authenticated");
     window.dispatchEvent(new Event("storage"));
-    navigate("/profile");
+    navigate(redirectTo);
   };
 
   return (

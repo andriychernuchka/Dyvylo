@@ -5,6 +5,8 @@ import { CatalogPage } from '../pages/CatalogPage';
 import { TitlePage } from '../pages/TitlePage';
 import { AuthPage } from '../pages/AuthPage';
 import { ProfilePage } from '../pages/ProfilePage';
+import { NotFoundPage } from '../pages/NotFoundPage';
+import { ProtectedRoute } from './ProtectedRoute';
 
 export function AppRoutes() {
   return (
@@ -15,8 +17,15 @@ export function AppRoutes() {
         <Route path="title/:id" element={<TitlePage />} />
         <Route path="player/:id" element={<TitlePage />} />
         <Route path="auth" element={<AuthPage />} />
-        <Route path="profile" element={<ProfilePage />} />
-        <Route path="*" element={<HomePage />} />
+        <Route
+          path="profile"
+          element={
+            <ProtectedRoute>
+              <ProfilePage />
+            </ProtectedRoute>
+          }
+        />
+        <Route path="*" element={<NotFoundPage />} />
       </Route>
     </Routes>
   );

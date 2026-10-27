@@ -1,10 +1,11 @@
 import { useState, useEffect } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Button } from "../components/ui";
 import styles from "./Header.module.css";
 
 export function Header() {
   const location = useLocation();
+  const navigate = useNavigate();
 
   // Auth state synchronization: default unauthenticated unless logged in
   const [isAuthenticated, setIsAuthenticated] = useState(() => {
@@ -24,6 +25,10 @@ export function Header() {
   const handleLogout = () => {
     localStorage.removeItem("dyvylo_auth_status");
     setIsAuthenticated(false);
+    // Leave the protected profile page after logging out
+    if (location.pathname.startsWith("/profile")) {
+      navigate("/", { replace: true });
+    }
   };
 
   const isActive = (path) => {
