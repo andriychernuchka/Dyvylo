@@ -17,16 +17,13 @@
 reports/
 Звіти/
 
-# Lab 1 workspace
-lab1*
-
-# Dependencies and build outputs
+# Workspaces and dependencies
 node_modules/
 dist/
 dist-ssr/
 *.local
-
-# Test outputs
-cypress/videos/
-cypress/screenshots/
-coverage/
+client/
+lab1*
+lab2*
+lab3*
+.husky/
