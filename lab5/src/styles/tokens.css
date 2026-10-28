@@ -1,10 +1,10 @@
 /**
- * DYVYLO DESIGN SYSTEM - TOKENS (Lab 2 Identity)
- * Concept: Architectural Cyberpunk / Cobalt Precision Media Hub
+ * ДИЗАЙН-СИСТЕМА DYVYLO — ТОКЕНИ (Ідентичність Lab 2)
+ * Концепція: архітектурний кіберпанк / кобальтовий медіа-хаб точності
  */
 
 :root {
-    /* Surfaces & Backgrounds */
+    /* Поверхні та фони */
     --bg-page: #08080a;
     --bg-surface: #0f0f13;
     --bg-elevated: #15151b;
@@ -15,21 +15,21 @@
     --bg-glass: rgba(15, 15, 19, 0.88);
     --bg-overlay: rgba(5, 5, 8, 0.82);
 
-    /* Borders & Dividers */
+    /* Рамки та розділювачі */
     --border-subtle: rgba(255, 255, 255, 0.07);
     --border-main: rgba(255, 255, 255, 0.12);
     --border-hover: rgba(255, 255, 255, 0.24);
     --border-focus: #3b82f6;
     --border-divider: rgba(255, 255, 255, 0.05);
 
-    /* Typography */
+    /* Типографіка */
     --text-main: #f8fafc;
     --text-muted: #94a3b8;
     --text-dim: #64748b;
     --text-inverse: #030305;
     --text-accent: #60a5fa;
 
-    /* Accent & Electric Blue (From Lab 2) */
+    /* Акцент і електричний синій (з Lab 2) */
     --accent-primary: #3b82f6;
     --accent-hover: #2563eb;
     --accent-dim: rgba(59, 130, 246, 0.12);
@@ -39,7 +39,7 @@
     --accent-cyan: #00f0ff;
     --accent-purple: #8b5cf6;
 
-    /* Status Colors */
+    /* Кольори статусів */
     --status-live: #10b981;
     --status-live-dim: rgba(16, 185, 129, 0.12);
     --status-live-border: rgba(16, 185, 129, 0.35);
@@ -50,21 +50,21 @@
     --status-danger: #ef4444;
     --status-danger-dim: rgba(239, 68, 68, 0.12);
 
-    /* Geometry & Radii (Strict Brutalist 2px/3px) */
+    /* Геометрія та радіуси (строгий бруталізм 2px/3px) */
     --radius-xs: 1px;
     --radius-sm: 2px;
     --radius-md: 3px;
     --radius-lg: 4px;
     --radius-pill: 9999px;
 
-    /* Fonts */
+    /* Шрифти */
     --font-sans:
         "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
         sans-serif;
     --font-mono:
         "JetBrains Mono", SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 
-    /* Font Sizes */
+    /* Розміри шрифтів */
     --font-size-2xs: 10px;
     --font-size-xs: 11px;
     --font-size-sm: 12.5px;
@@ -76,7 +76,7 @@
     --font-size-3xl: 36px;
     --font-size-4xl: 48px;
 
-    /* Spacing */
+    /* Відступи */
     --space-1: 4px;
     --space-2: 8px;
     --space-3: 12px;
@@ -88,11 +88,11 @@
     --space-12: 48px;
     --space-16: 64px;
 
-    /* Transitions */
+    /* Переходи */
     --transition-fast: 0.12s ease;
     --transition: 0.18s ease;
 
-    /* Layout */
+    /* Компонування */
     --container-max: 1360px;
     --container-narrow: 1080px;
     --header-height: 56px;

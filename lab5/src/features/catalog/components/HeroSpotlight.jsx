@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { Badge, Button } from '../../../components/ui';
 import styles from './HeroSpotlight.module.css';
 
@@ -44,19 +45,19 @@ export function HeroSpotlight({ release }) {
         </div>
 
         <div className={styles.actions}>
-          <a href="#player">
+          <Link to={`/player/${release.id}`}>
             <Button variant="primary" size="lg">
               <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
                 <polygon points="5 3 19 12 5 21 5 3" />
               </svg>
               Дивитися зараз
             </Button>
-          </a>
-          <a href="#details">
+          </Link>
+          <Link to={`/title/${release.id}`}>
             <Button variant="secondary" size="lg">
               Деталі та серії
             </Button>
-          </a>
+          </Link>
           <Button
             variant={isBookmarked ? 'outline' : 'ghost'}
             size="lg"

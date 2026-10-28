@@ -1,8 +1,12 @@
 import { useState, useEffect } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Button } from "../components/ui";
 import styles from "./Header.module.css";
 
 export function Header() {
+  const location = useLocation();
+  const navigate = useNavigate();
+
   // Auth state synchronization: default unauthenticated unless logged in
   const [isAuthenticated, setIsAuthenticated] = useState(() => {
     return localStorage.getItem("dyvylo_auth_status") === "authenticated";
@@ -21,6 +25,15 @@ export function Header() {
   const handleLogout = () => {
     localStorage.removeItem("dyvylo_auth_status");
     setIsAuthenticated(false);
+    // Leave the protected profile page after logging out
+    if (location.pathname.startsWith("/profile")) {
+      navigate("/", { replace: true });
+    }
+  };
+
+  const isActive = (path) => {
+    if (path === "/") return location.pathname === "/";
+    return location.pathname.startsWith(path);
   };
 
   return (
@@ -28,7 +41,7 @@ export function Header() {
       <div className="container">
         <div className={styles.inner}>
           <div className={styles.left}>
-            <a href="#home" className={styles.brand}>
+            <Link to="/" className={styles.brand}>
               <div className={styles.brandSquare}>
                 <svg
                   width="14"
@@ -48,23 +61,32 @@ export function Header() {
                 </div>
                 <span className={styles.brandSub}>стрімінг-агрегатор</span>
               </div>
-            </a>
+            </Link>
 
             <nav className={styles.nav}>
-              <a href="#home" className={`${styles.navLink} ${styles.activeLink}`}>
+              <Link
+                to="/"
+                className={`${styles.navLink} ${isActive("/") && location.pathname === "/" ? styles.activeLink : ""}`}
+              >
                 Головна
-              </a>
-              <a href="#catalog" className={styles.navLink}>
+              </Link>
+              <Link
+                to="/catalog"
+                className={`${styles.navLink} ${isActive("/catalog") ? styles.activeLink : ""}`}
+              >
                 Каталог
-              </a>
-              <a href="#player" className={styles.navLink}>
+              </Link>
+              <Link
+                to="/player/blade-runner-2049"
+                className={`${styles.navLink} ${isActive("/player") ? styles.activeLink : ""}`}
+              >
                 Плеєр
-              </a>
+              </Link>
             </nav>
           </div>
 
           <div className={styles.right}>
-            <a href="#catalog" className={styles.searchBar}>
+            <Link to="/catalog" className={styles.searchBar}>
               <svg
                 width="13"
                 height="13"
@@ -78,19 +100,19 @@ export function Header() {
               </svg>
               <span>Пошук...</span>
               <span className={styles.shortcut}>⌘K</span>
-            </a>
+            </Link>
 
             {/* Mutually exclusive auth display */}
             {isAuthenticated ? (
               <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
-                <a
-                  href="#profile"
+                <Link
+                  to="/profile"
                   className={styles.userPill}
                   title="Особистий кабінет"
                 >
                   <div className={styles.avatar}>O</div>
                   <span>@operator</span>
-                </a>
+                </Link>
                 <button
                   type="button"
                   onClick={handleLogout}
@@ -106,11 +128,11 @@ export function Header() {
                 </button>
               </div>
             ) : (
-              <a href="#auth">
+              <Link to="/auth">
                 <Button variant="primary" size="sm">
                   Вхід / Реєстрація
                 </Button>
-              </a>
+              </Link>
             )}
           </div>
         </div>

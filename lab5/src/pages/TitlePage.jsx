@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useParams, Link } from 'react-router-dom';
 import { PlayerViewport } from '../features/player/components/PlayerViewport';
 import { TelemetryCard } from '../features/player/components/TelemetryCard';
 import { EpisodeCard } from '../features/catalog/components/EpisodeCard';
@@ -7,12 +8,13 @@ import { MOCK_RELEASES, MOCK_EPISODES, STREAM_NODES } from '../data/mockData';
 import styles from './TitlePage.module.css';
 
 export function TitlePage() {
+  const { id } = useParams();
   const [selectedNode, setSelectedNode] = useState(STREAM_NODES[0]);
   const [isFavorite, setIsFavorite] = useState(false);
 
   // Find release by ID, default to first release
   const release =
-    MOCK_RELEASES[0];
+    MOCK_RELEASES.find((r) => r.id === id) || MOCK_RELEASES[0];
 
   return (
     <div className="container">
@@ -51,9 +53,9 @@ export function TitlePage() {
                 >
                   {isFavorite ? '✓ Збережено в обраному' : '+ Додати в обране'}
                 </Button>
-                <a href="#catalog">
+                <Link to="/catalog">
                   <Button variant="ghost">← Повернутися до каталогу</Button>
-                </a>
+                </Link>
               </div>
             </div>
 

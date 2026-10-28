@@ -1,16 +1,26 @@
 import { useState, useMemo } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import { FilterPanel } from '../features/catalog/components/FilterPanel';
 import { MediaCard } from '../features/catalog/components/MediaCard';
 import { MOCK_RELEASES } from '../data/mockData';
 import styles from './CatalogPage.module.css';
 
 export function CatalogPage() {
+  const [searchParams, setSearchParams] = useSearchParams();
+  const urlType = searchParams.get('type') || 'all';
+
   const [query, setQuery] = useState('');
-  const [activeType, setActiveType] = useState('all');
+  const [activeType, setActiveType] = useState(urlType);
   const [sortBy, setSortBy] = useState('rating');
 
   const handleTypeChange = (type) => {
     setActiveType(type);
+    if (type === 'all') {
+      searchParams.delete('type');
+      setSearchParams(searchParams);
+    } else {
+      setSearchParams({ type });
+    }
   };
 
   const filteredItems = useMemo(() => {

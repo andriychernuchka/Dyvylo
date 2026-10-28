@@ -1,8 +1,9 @@
+import { Link } from 'react-router-dom';
 import styles from './EpisodeCard.module.css';
 
 export function EpisodeCard({ episode, mediaId = 'house-of-the-dragon', thumb }) {
   return (
-    <a href="#player" className={styles.card}>
+    <Link to={`/player/${mediaId}`} className={styles.card}>
       <div className={styles.thumbWrap}>
         <img
           src={thumb || 'https://static.tvmaze.com/uploads/images/original_untouched/627/1568449.jpg'}
@@ -24,7 +25,7 @@ export function EpisodeCard({ episode, mediaId = 'house-of-the-dragon', thumb })
           </div>
         )}
       </div>
-    </a>
+    </Link>
   );
 }
 
