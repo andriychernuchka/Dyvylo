@@ -1,30 +1,15 @@
-import { useState, useEffect } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Button } from "../components/ui";
+import { useAuth } from "../hooks/useAuth";
 import styles from "./Header.module.css";
 
 export function Header() {
   const location = useLocation();
   const navigate = useNavigate();
-
-  // Auth state synchronization: default unauthenticated unless logged in
-  const [isAuthenticated, setIsAuthenticated] = useState(() => {
-    return localStorage.getItem("dyvylo_auth_status") === "authenticated";
-  });
-
-  useEffect(() => {
-    const handleStorage = () => {
-      setIsAuthenticated(
-        localStorage.getItem("dyvylo_auth_status") === "authenticated",
-      );
-    };
-    window.addEventListener("storage", handleStorage);
-    return () => window.removeEventListener("storage", handleStorage);
-  }, []);
+  const { isAuthenticated, user, logout } = useAuth();
 
   const handleLogout = () => {
-    localStorage.removeItem("dyvylo_auth_status");
-    setIsAuthenticated(false);
+    logout();
     // Leave the protected profile page after logging out
     if (location.pathname.startsWith("/profile")) {
       navigate("/", { replace: true });
@@ -110,8 +95,8 @@ export function Header() {
                   className={styles.userPill}
                   title="Особистий кабінет"
                 >
-                  <div className={styles.avatar}>O</div>
-                  <span>@operator</span>
+                  <div className={styles.avatar}>{(user?.name || "O")[0].toUpperCase()}</div>
+                  <span>@{user?.name || "operator"}</span>
                 </Link>
                 <button
                   type="button"
