@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { Button, Input } from "../components/ui";
+import { useAuth } from "../hooks/useAuth";
 import styles from "./AuthPage.module.css";
 
 export function AuthPage() {
@@ -10,20 +11,31 @@ export function AuthPage() {
   const [name, setName] = useState("");
   const navigate = useNavigate();
   const location = useLocation();
+  const { login, register, loading, error } = useAuth();
   // Return to the page the guard redirected from (e.g. /profile)
   const redirectTo = location.state?.from?.pathname || "/profile";
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    localStorage.setItem("dyvylo_auth_status", "authenticated");
-    window.dispatchEvent(new Event("storage"));
-    navigate(redirectTo);
+    try {
+      if (tab === "login") {
+        await login({ email, password });
+      } else {
+        await register({ name, email, password });
+      }
+      navigate(redirectTo);
+    } catch {
+      // The hook stores the error message and it is rendered below.
+    }
   };
 
-  const handleQuickAuth = () => {
-    localStorage.setItem("dyvylo_auth_status", "authenticated");
-    window.dispatchEvent(new Event("storage"));
-    navigate(redirectTo);
+  const handleQuickAuth = async () => {
+    try {
+      await login({ email: "operator@dyvylo.net", password: "demo" });
+      navigate(redirectTo);
+    } catch {
+      // Ignore - error is displayed from the hook.
+    }
   };
 
   return (
@@ -128,8 +140,25 @@ export function AuthPage() {
               </span>
             </div>
 
-            <Button type="submit" variant="primary" size="lg">
-              {tab === "login" ? "Увійти в термінал" : "Зареєструвати вузол"}
+            {error && (
+              <p
+                role="alert"
+                style={{
+                  color: "var(--status-error, #ff4d6d)",
+                  fontSize: 12,
+                  fontFamily: "var(--font-mono)",
+                }}
+              >
+                {error}
+              </p>
+            )}
+
+            <Button type="submit" variant="primary" size="lg" disabled={loading}>
+              {loading
+                ? "З'єднання..."
+                : tab === "login"
+                  ? "Увійти в термінал"
+                  : "Зареєструвати вузол"}
             </Button>
           </form>
 

@@ -1,4 +1,6 @@
-import { useState } from 'react';
+// src/pages/TitlePage.jsx
+
+import { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { PlayerViewport } from '../features/player/components/PlayerViewport';
 import { TelemetryCard } from '../features/player/components/TelemetryCard';
@@ -6,15 +8,43 @@ import { EpisodeCard } from '../features/catalog/components/EpisodeCard';
 import { Badge, Button } from '../components/ui';
 import { MOCK_RELEASES, MOCK_EPISODES, STREAM_NODES } from '../data/mockData';
 import styles from './TitlePage.module.css';
+import { useBookmarks } from '../hooks/useBookmarks';
+import { useAuth } from '../hooks/useAuth';
 
 export function TitlePage() {
   const { id } = useParams();
   const [selectedNode, setSelectedNode] = useState(STREAM_NODES[0]);
-  const [isFavorite, setIsFavorite] = useState(false);
+  const [notice, setNotice] = useState('');
+  const { bookmarks, loading, error, add, remove } = useBookmarks();
+  const { isAuthenticated } = useAuth();
 
-  // Find release by ID, default to first release
   const release =
     MOCK_RELEASES.find((r) => r.id === id) || MOCK_RELEASES[0];
+
+  const isFavorite = bookmarks.some((b) => b.id === release.id);
+  const bookmarkMessage = notice || error;
+
+  useEffect(() => {
+    if (isAuthenticated) setNotice('');
+  }, [isAuthenticated]);
+
+  const handleToggleFavorite = async () => {
+    if (!isAuthenticated) {
+      setNotice('Додавати в закладки можна тільки після реєстрації');
+      return;
+    }
+
+    setNotice('');
+    try {
+      if (isFavorite) {
+        await remove(release.id);
+      } else {
+        await add(release);
+      }
+    } catch {
+      // The error is stored inside useBookmarks and rendered below.
+    }
+  };
 
   return (
     <div className="container">
@@ -46,10 +76,24 @@ export function TitlePage() {
               <p style={{ fontSize: 14, color: 'var(--text-muted)', lineHeight: 1.6, marginBottom: 16 }}>
                 {release.synopsis}
               </p>
+              {bookmarkMessage && (
+                <p
+                  role="alert"
+                  style={{
+                    color: 'var(--status-error, #ff4d6d)',
+                    fontFamily: 'var(--font-mono)',
+                    fontSize: 12,
+                    marginBottom: 12,
+                  }}
+                >
+                  {bookmarkMessage}
+                </p>
+              )}
               <div style={{ display: 'flex', gap: 12 }}>
                 <Button
                   variant={isFavorite ? 'outline' : 'secondary'}
-                  onClick={() => setIsFavorite(!isFavorite)}
+                  onClick={handleToggleFavorite}
+                  disabled={loading}
                 >
                   {isFavorite ? '✓ Збережено в обраному' : '+ Додати в обране'}
                 </Button>

@@ -1,10 +1,32 @@
 import { MediaCard } from "../features/catalog/components/MediaCard";
 import { Badge, Button } from "../components/ui";
-import { MOCK_RELEASES } from "../data/mockData";
+import { useAuth } from "../hooks/useAuth";
+import { useBookmarks } from "../hooks/useBookmarks";
 import styles from "./ProfilePage.module.css";
 
 export function ProfilePage() {
-  const bookmarks = MOCK_RELEASES.slice(0, 4);
+  const { user } = useAuth();
+  const { bookmarks, loading, error, remove, clear } = useBookmarks();
+
+  const displayName = user?.name || "operator";
+  const avatarLetter = displayName[0].toUpperCase();
+
+  const handleRemove = async (id) => {
+    try {
+      await remove(id);
+    } catch {
+      // The error is stored inside useBookmarks and rendered below.
+    }
+  };
+
+  const handleClear = async () => {
+    if (!bookmarks.length) return;
+    try {
+      await clear();
+    } catch {
+      // The error is stored inside useBookmarks and rendered below.
+    }
+  };
 
   return (
     <div className="container">
@@ -12,7 +34,7 @@ export function ProfilePage() {
         {/* User Card */}
         <div className={styles.userCard}>
           <div className={styles.userInfo}>
-            <div className={styles.avatar}>O</div>
+            <div className={styles.avatar}>{avatarLetter}</div>
             <div>
               <div
                 style={{
@@ -22,7 +44,7 @@ export function ProfilePage() {
                   marginBottom: 4,
                 }}
               >
-                <h1 className={styles.name}>@operator</h1>
+                <h1 className={styles.name}>@{displayName}</h1>
                 <Badge variant="live" liveDot>
                   АКТИВНИЙ ВУЗОЛ
                 </Badge>
@@ -46,7 +68,9 @@ export function ProfilePage() {
             </div>
             <div className={styles.statItem}>
               <span className={styles.statLabel}>В обраному</span>
-              <span className={styles.statVal}>{bookmarks.length} тайтли</span>
+              <span className={styles.statVal}>
+                {loading ? "…" : `${bookmarks.length} тайтли`}
+              </span>
             </div>
             <div className={styles.statItem}>
               <span className={styles.statLabel}>Аптайм</span>
@@ -79,16 +103,57 @@ export function ProfilePage() {
                 Мої закладки (Обране)
               </h2>
             </div>
-            <Button variant="ghost" size="sm">
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={handleClear}
+              disabled={loading || bookmarks.length === 0}
+            >
               Очистити список
             </Button>
           </div>
 
-          <div className={styles.grid}>
-            {bookmarks.map((item) => (
-              <MediaCard key={item.id} item={item} />
-            ))}
-          </div>
+          {error && (
+            <p
+              role="alert"
+              style={{
+                color: "var(--status-error, #ff4d6d)",
+                fontFamily: "var(--font-mono)",
+                fontSize: 12,
+                marginBottom: 12,
+              }}
+            >
+              {error}
+            </p>
+          )}
+
+          {loading ? (
+            <p style={{ color: "var(--text-muted)", fontSize: 13 }}>
+              Завантаження закладок...
+            </p>
+          ) : bookmarks.length === 0 ? (
+            <div
+              style={{
+                border: "1px dashed var(--border-subtle)",
+                padding: 28,
+                textAlign: "center",
+                color: "var(--text-muted)",
+                fontSize: 13,
+              }}
+            >
+              У вас ще немає закладок. Додайте тайтл зі сторінки релізу.
+            </div>
+          ) : (
+            <div className={styles.grid}>
+              {bookmarks.map((item) => (
+                <MediaCard
+                  key={item.id}
+                  item={item}
+                  onRemove={() => handleRemove(item.id)}
+                />
+              ))}
+            </div>
+          )}
         </section>
       </div>
     </div>

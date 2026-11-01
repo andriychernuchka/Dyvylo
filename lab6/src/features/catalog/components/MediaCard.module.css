@@ -1,13 +1,20 @@
 .card {
   display: flex;
   flex-direction: column;
+  height: 100%;
   background: var(--bg-card);
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-sm);
   overflow: hidden;
   transition: all var(--transition-fast);
-  text-decoration: none;
   position: relative;
+}
+
+.cardLink {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  text-decoration: none;
 }
 
 .card:hover {
@@ -81,4 +88,25 @@
   margin-top: 4px;
   border-top: 1px solid var(--border-divider);
   padding-top: 6px;
+}
+
+.removeBtn {
+  width: 100%;
+  margin-top: auto;
+  padding: 9px 12px;
+  border: 0;
+  border-top: 1px solid var(--border-divider);
+  background: transparent;
+  color: var(--text-dim);
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.04em;
+  text-align: left;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.removeBtn:hover {
+  background: rgba(255, 77, 109, 0.08);
+  color: var(--status-error, #ff4d6d);
 }

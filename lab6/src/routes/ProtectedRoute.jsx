@@ -1,9 +1,9 @@
-import { Navigate, useLocation } from 'react-router-dom';
+import { Navigate, useLocation } from "react-router-dom";
+import { useAuth } from "../hooks/useAuth";
 
 export function ProtectedRoute({ children }) {
   const location = useLocation();
-  const isAuthenticated =
-    localStorage.getItem('dyvylo_auth_status') === 'authenticated';
+  const { isAuthenticated } = useAuth();
 
   if (!isAuthenticated) {
     return <Navigate to="/auth" state={{ from: location }} replace />;
