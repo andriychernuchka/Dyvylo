@@ -1,0 +1,10 @@
+node_modules/
+dist/
+*.db
+*.db-shm
+*.db-wal
+.env
+.DS_Store
+
+# This workspace contains its own client app (root .gitignore ignores client/)
+!client/
