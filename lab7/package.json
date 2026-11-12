@@ -1,0 +1,17 @@
+{
+  "name": "dyvylo-lab7",
+  "private": true,
+  "version": "1.0.0",
+  "description": "DYVYLO — Lab 7: Node/Express API for the DYVYLO streaming aggregator",
+  "workspaces": [
+    "server",
+    "client"
+  ],
+  "scripts": {
+    "dev:server": "npm run dev --workspace server",
+    "dev:client": "npm run dev --workspace client",
+    "dev": "node scripts/dev.js",
+    "build": "npm run build --workspace client",
+    "start": "npm run start --workspace server"
+  }
+}
